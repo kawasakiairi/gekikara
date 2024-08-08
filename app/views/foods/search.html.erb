@@ -1,0 +1,6 @@
+<h1>食品検索</h1>
+
+<%= form_tag(foods_path, method: :get) do %>
+  <%= text_field_tag :query, nil, placeholder: '食品名を入力' %>
+  <%= submit_tag '検索' %>
+<% end %>

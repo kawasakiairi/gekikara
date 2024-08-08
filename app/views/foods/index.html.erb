@@ -1,14 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<h1>検索結果</h1>
 
-<h1>Foods</h1>
+<% if @foods.present? %>
+  <ul>
+    <% @foods.each do |food| %>
+      <li><%= food.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>該当する食品が見つかりませんでした。</p>
+<% end %>
 
-<div id="foods">
-  <% @foods.each do |food| %>
-    <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New food", new_food_path %>
+<%= link_to '検索ページに戻る', root_path %>
