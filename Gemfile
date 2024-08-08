@@ -72,3 +72,7 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+# Bootstrap導入（8/9追加）
+gem 'bootstrap'
+gem 'sassc-rails'
