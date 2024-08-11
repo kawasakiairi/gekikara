@@ -1,13 +1,41 @@
-<h1>検索結果</h1>
+<div class="container my-5">
+  <h2 class="mb-4">あなたにぴったりの激辛食品が<span style="font-size: 1em; color: #ff0000;"><%= @total_count %>件</span>見つかりました。</h2>
 
-<% if @foods.present? %>
-  <ul>
+  <div class="text-end">  
+    <%= link_to '新しい順', foods_path(sort: 'new'), class: 'text-black' %>
+    <%= link_to '古い順', foods_path(sort: 'old'), class: 'text-black' %>
+    <%= link_to '辛い順', foods_path(sort: 'hot'), class: 'text-black' %>
+    <%= link_to '辛くない順', foods_path(sort: 'mild'), class: 'text-black' %>
+  </div>
+  <hr class="my-4 border border-brack border-3 ">
+  <div class="row">
     <% @foods.each do |food| %>
-      <li><%= food.name %></li>
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 border-danger" style="border-width: 4px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <%= image_tag(food.food_image.present? ? food.food_image.url : "ramen.png", class: "img-fluid mx-auto d-block") %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h4 class="card-title fw-bold"><%= food.name %></h4>
+                <span class="badge bg-danger"><%= food.food_category.name %></span>
+                <p class="card-text fw-bold">
+                  辛さレベル 
+                  <% food.spice_level.times do %>
+                    <i class="bi bi-fire text-danger"></i>
+                  <% end %>
+                  <% (5 - food.spice_level).times do %>
+                    <i class="bi bi-fire text-secondary"></i>
+                  <% end %>
+                </p>
+                <p class="card-text fw-bold">希望小売価格 <%= number_to_currency(food.price, unit: "円", format: "%n%u") %> (税別)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
-<% else %>
-  <p>該当する食品が見つかりませんでした。</p>
-<% end %>
-
-<%= link_to '検索ページに戻る', root_path %>
+    <%= paginate @foods %>
+  </div>
+</div>
