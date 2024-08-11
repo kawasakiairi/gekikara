@@ -1,6 +1,48 @@
-あなたにぴったりの激辛食品、ドウ？
-<%= form_tag(foods_path, method: :get) do %>
-  <%= text_field_tag :query, nil, placeholder: '食品名を入力' %>
-  <%= submit_tag '検索' %>
-<% end %>
+<style>
+  body {
+  background-color: #dc3545; /* 背景色を赤に設定 */
+  color: white;
+  padding-top: 200px; /* コンテナの位置を下げる */
+  }
+</style>
 
+
+<div class="container my-5">
+  <h1 class="text-center mb-4">ゲキカラ、ドウ？</h1>
+  <div class="bg-white p-4 rounded shadow-lg">
+    <%= form_with(scope: :search, url: foods_path, method: :get, local: true, class: 'row g-3') do |f| %>
+      <!-- 国から探す -->
+      <div class="col-md-6">
+        <label for="country" class="form-label">国から探す</label>
+        <%= f.collection_select(:food_country_id, FoodCountry.all, :id, :name, { selected: @search_params[:food_country_id] }, { class: 'form-select' }) %>
+      </div>
+
+      <!-- 値段から探す -->
+      <div class="col-md-6">
+        <label class="form-label">値段から探す</label>
+        <div class="d-flex align-items-center">
+          <%= f.number_field :price_from, value: @search_params[:price_from], class: 'form-control', placeholder: '最低価格' %>
+          <span class="mx-2">~</span>
+          <%= f.number_field :price_to, value: @search_params[:price_to], class: 'form-control', placeholder: '最高価格' %>
+        </div>
+      </div>
+
+      <!-- カテゴリから探す -->
+      <div class="col-md-6">
+        <label class="form-label">カテゴリから探す</label>
+        <%= f.collection_select(:food_category_id, FoodCategory.all, :id, :name, { selected: @search_params[:food_category_id]}, { class: 'form-select' }) %>
+      </div>
+      
+      <!-- キーワードから探す -->
+      <div class="col-md-6">
+        <label for="keyword" class="form-label">キーワードから探す</label>
+        <%= f.text_field :keyword, value: @search_params[:keyword], class: 'form-control', placeholder: 'キーワードを入力' %>
+      </div>
+      
+      <!-- 検索ボタン -->
+      <div class="col-12 text-center">
+        <%= f.submit "検索", class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+  </div>
+</div>
