@@ -1,0 +1,5 @@
+class AddTitleToFoods < ActiveRecord::Migration[7.0]
+  def change
+    add_column :foods, :title, :string, null: false, comment: 'タイトル'
+  end
+end
