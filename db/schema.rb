@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_08_080800) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_11_113528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_08_080800) do
     t.string "name", null: false, comment: "食品名"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country", null: false, comment: "国"
+    t.integer "spice_level", null: false, comment: "辛さレベル"
+    t.string "price", null: false, comment: "希望小売価格"
+    t.string "title", null: false, comment: "タイトル"
+    t.string "body", null: false, comment: "説明"
   end
 
 end
