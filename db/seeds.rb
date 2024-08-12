@@ -2,6 +2,7 @@ ApplicationRecord.transaction do
   Food.delete_all
   FoodCategory.delete_all
   FoodCountry.delete_all
+  User.delete_all
 
   # FoodCategoryモデル追加（8/11追加）
   FoodCategory.find_or_create_by(id: 1) { |category| category.update(name: 'ラーメン') }
@@ -29,5 +30,13 @@ ApplicationRecord.transaction do
   Food.create(id: 9, name: 'ノグリ 旨辛焼きちゃんぽん 袋麺', spice_level: '3.5', price: 'null', title: 'もちもちした太麺に海鮮のコクと唐辛子がきいた、旨辛な汁なし麺。', body: 'コシのあるもちもちとした太麺はうどんのような食べ応え。 大きい昆布やわかめ、いか、にんじんなど、具もたっぷり入ってボリューム満点。 貝、いか、えび、かつおなどさまざまな海鮮の旨みとコクにピリッと唐辛子がきいた旨辛味が後を引く美味しさです。', food_category_id: 1, food_country_id: 1)
   Food.create(id: 10, name: 'チャーワン 袋麺', spice_level: '0.5', price: 'null', title: 'お店で食べるような風味を再現、韓国風プレミアムジャージャン麺。', body: '甘味のあるソースはマイルドでありながら濃厚。昆布粉末を練り込んだ、独自製法のもちもち太麺はインスタントとは思えない食感です。 玉ねぎ、キャベツ、じゃがいも、エンドウ豆などの食べ応えのある大きな具材はソースとの相性も抜群です。', food_category_id: 1, food_country_id: 1)
 
+  # Userモデル登録（8/12追加）
+  User.create(id: 1, name: '重岡大毅', email: 'shigeoka_daiki@west.com', password: 'password', password_confirmation: 'password')
+  User.create(id: 2, name: '桐山照史', email: 'kiriyama_akito@west.com', password: 'password', password_confirmation: 'password')
+  User.create(id: 3, name: '中間淳太', email: 'nakama_junta@west.com', password: 'password', password_confirmation: 'password')
+  User.create(id: 4, name: '神山智洋', email: 'kamiyama_tomohiro@west.com', password: 'password', password_confirmation: 'password')
+  User.create(id: 5, name: '藤井流星', email: 'fuji_ryusei@west.com', password: 'password', password_confirmation: 'password')
+  User.create(id: 6, name: '濵田崇裕', email: 'hamada_takahiro@west.com', password: 'password', password_confirmation: 'password')
+  User.create(id: 7, name: '小瀧望', email: 'kotaki_nozomu@west.com', password: 'password', password_confirmation: 'password')
 
 end

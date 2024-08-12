@@ -1,0 +1,28 @@
+<h1>ユーザー登録ページ</h1>
+
+<!-- ユーザー登録 -->
+<%= form_with model: @user do |f| %>
+    <!-- ユーザー名 -->
+    <div>
+        ユーザー名
+        <%= f.text_field :name %>
+    </div>
+    <!-- メールアドレス -->
+    <div>
+        メールアドレス
+        <%= f.text_field :email %>    
+    </div>
+    <!-- パスワード -->
+    <div>
+        パスワード
+        <%= f.password_field :password %>    
+    </div>
+    <!-- パスワード確認用 -->
+    <div>
+        パスワード確認用
+        <%= f.password_field :password_confirmation %>    
+    </div>
+    <div>
+        <%= f.submit "登録する" %>    
+    </div>
+<% end %>
