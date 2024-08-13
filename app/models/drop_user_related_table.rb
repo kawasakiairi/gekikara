@@ -1,2 +1,0 @@
-class DropUserRelatedTable < ApplicationRecord
-end

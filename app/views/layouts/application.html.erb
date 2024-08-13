@@ -12,12 +12,13 @@
 
   <body>
     <!-- ログイン/未ログイン状態による切り替え（8/12追加） -->
+    <!-- sorceryを使用している場合に提供されるメソッド -->
     <% if logged_in? %>
       <%= render 'shared/header' %>
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
     <%= yield %>
-    <!--<%= render 'shared/footer' %>-->
+    <!-- <%= render 'shared/footer' %> -->
   </body>
 </html>

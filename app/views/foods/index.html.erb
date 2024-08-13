@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container pt-3">
   <h2 class="mb-4">あなたにぴったりの激辛食品が<span style="font-size: 1em; color: #ff0000;"><%= @total_count %>件</span>見つかりました。</h2>
 
   <div class="text-end">  
@@ -14,7 +14,7 @@
         <div class="card h-100 border-danger" style="border-width: 4px;">
           <div class="row g-0">
             <div class="col-md-4">
-              <%= image_tag(food.food_image.present? ? food.food_image.url : "ramen.png", class: "img-fluid mx-auto d-block") %>
+              <%= image_tag(food.food_image.present? ? food.food_image.url : "image_ramen.png", class: "img-fluid mx-auto d-block") %>
             </div>
             <div class="col-md-8">
               <div class="card-body">

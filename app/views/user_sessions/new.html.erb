@@ -1,21 +1,24 @@
-<h1>ログインページ</h1>
+<div class="container pt-3">
 
-<!-- ログイン -->
-<%= form_with url: login_path do |f| %>
-    <!-- メールアドレス -->
-    <div>
-        メールアドレス
-        <%= f.text_field :email %>    
-    </div>
-    <!-- パスワード -->
-    <div>
-        パスワード
-        <%= f.password_field :password %>    
-    </div>
-    <div>
-        <%= f.submit "ログインする" %>    
-    </div>
-<% end %>
+    <h1>ログインページ</h1>
 
-<!-- 会員登録ページリンク -->
-<%= link_to '会員登録する', new_user_path %>
+    <!-- ログイン -->
+    <%= form_with url: login_path do |f| %>
+        <!-- メールアドレス -->
+        <div>
+            メールアドレス
+            <%= f.text_field :email %>    
+        </div>
+        <!-- パスワード -->
+        <div>
+            パスワード
+            <%= f.password_field :password %>    
+        </div>
+        <div>
+            <%= f.submit "ログインする" %>    
+        </div>
+    <% end %>
+
+    <!-- 会員登録ページリンク -->
+    <%= link_to '会員登録する', new_user_path %>
+</div>

@@ -8,8 +8,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path
+      session[:user_id] = @user.id # 自動的にログインさせる
+      flash[:notice] = 'ユーザーの作成に成功しました'
+      redirect_to root_path
     else
+      flash.now[:alert] = 'ユーザーの作成に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
