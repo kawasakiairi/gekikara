@@ -3,6 +3,7 @@ ApplicationRecord.transaction do
   FoodCategory.delete_all
   FoodCountry.delete_all
   User.delete_all
+  Review.delete_all
 
   # FoodCategoryモデル追加（8/11追加）
   FoodCategory.find_or_create_by(id: 1) { |category| category.update(name: 'ラーメン') }
@@ -39,4 +40,8 @@ ApplicationRecord.transaction do
   User.create(id: 6, name: '濵田崇裕', email: 'hamada_takahiro@west.com', password: 'password', password_confirmation: 'password')
   User.create(id: 7, name: '小瀧望', email: 'kotaki_nozomu@west.com', password: 'password', password_confirmation: 'password')
 
+  # Reviewモデル（8/13追加）
+  Review.create(id: 1, title: 'とても美味しい1', rating: 'とても美味しかったです。', spice_level: 3, food_id: '1', user_id: '1')
+  Review.create(id: 2, title: 'めっちゃ美味しい1', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: '1', user_id: '2')
+  Review.create(id: 3, title: '美味しい2', rating: 'とても美味しかったです。', spice_level: 3, food_id: '2', user_id: '1')
 end

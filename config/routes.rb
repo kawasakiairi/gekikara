@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   # /logoutに対してDELETEリクエストが送信された場合、user_sessionsコントローラーのdestroyアクションを呼び出す
   delete 'logout', to: 'user_sessions#destroy'
 
+  resources :reviews, only: %i[show]
+
 end

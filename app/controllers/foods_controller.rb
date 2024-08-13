@@ -32,8 +32,8 @@ class FoodsController < ApplicationController
   # 食品詳細表示ページ
   def show
     @food = Food.find(params[:id])
+    @reviews = @food.reviews # ここで関連するレビューを取得（8/13追加）
   end
-
 
   private
 

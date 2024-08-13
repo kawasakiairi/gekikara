@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_12_151558) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_13_153522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_12_151558) do
     t.index ["food_country_id"], name: "index_foods_on_food_country_id"
   end
 
+  create_table "reviews", comment: "レビュー", force: :cascade do |t|
+    t.string "title", null: false, comment: "タイトル"
+    t.string "rating", null: false, comment: "評価"
+    t.integer "spice_level", comment: "辛さレベル"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "food_id", comment: "レビュー"
+    t.bigint "user_id"
+    t.index ["food_id"], name: "index_reviews_on_food_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -53,4 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_12_151558) do
 
   add_foreign_key "foods", "food_categories", on_update: :restrict, on_delete: :restrict
   add_foreign_key "foods", "food_countries", on_update: :restrict, on_delete: :restrict
+  add_foreign_key "reviews", "foods", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "reviews", "users", on_update: :cascade, on_delete: :cascade
 end

@@ -2,6 +2,7 @@ class Food < ApplicationRecord
   # 外部キー制約（8/11追加）
   belongs_to :food_category
   belongs_to :food_country
+  has_many :reviews, dependent: :destroy
 
   # FoodモデルでCarrierWaveを使用するように設定（8/12追加）
   mount_uploader :food_image, FoodImageUploader
