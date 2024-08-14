@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
+  # ユーザー登録ページ（8/12追加）
   def new
     @user = User.new
   end
@@ -15,6 +16,11 @@ class UsersController < ApplicationController
       flash.now[:alert] = 'ユーザーの作成に失敗しました'
       render :new, status: :unprocessable_entity
     end
+  end
+
+  # ユーザーページ（8/14追加）
+  def show
+    @user = User.find(params[:id])
   end
 
   private

@@ -85,6 +85,9 @@ GEM
     bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
+    bootstrap5-kaminari-views (0.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.3.0)
     capybara (3.40.0)
       addressable
@@ -320,6 +323,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   bootstrap
+  bootstrap5-kaminari-views (~> 0.0.1)
   capybara
   carrierwave (~> 2.0)
   debug

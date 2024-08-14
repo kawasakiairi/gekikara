@@ -1,37 +1,85 @@
-<div class="container pt-3">
-    <h1>商品詳細</h1>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="fw-bold">食品詳細</h1>
+  </div>
+</section>
 
-    <ul>
-        <li><%= @food.name %></li>
-        <li><%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png") %></li>
-        <li><%= @food.food_category.name %></li>
-        <li>
-            <% @food.spice_level.times do %>
-                <i class="bi bi-fire text-danger"></i>
-            <% end %>
-            <% (5 - @food.spice_level).times do %>
-                <i class="bi bi-fire text-secondary"></i>
-            <% end %>
-        </li>
-        <li><%= @food.price %></li>
-        <li><%= @food.title %></li>
-        <li><%= @food.body %></li>
-    </ul>
+<div class="album py-5">
+  <div class="container">
+    <!-- 食品詳細 -->
+    <div class="row mb-6">
+      <div class="col-md-6">
+        <%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png", class: "img-fluid rounded") %>
+      </div>
+    <div class="col-md-6">
+        <h1 class="fw-bold fw-bold text-primary"><%= @food.name %></h1>
+        <!-- 食品タグ -->
+        <h4 class="fw-bold pt-3">
+            <span class="badge rounded-pill bg-primary"><%= @food.food_category.name %></span>
+        </h4>
 
-    <h1>Reviews</h1>
-    <% @reviews.each do |review| %>
-    <div>
-        <p><%= review.title %></p>
-        <p><%= review.rating %></p>
-        <p><%= review.spice_level %></p>
+        <h4 class="fw-bold pt-3">
+        辛さレベル
+        <% @food.spice_level.times do %>
+        <i class="bi bi-fire text-danger"></i>
+        <% end %>
+        <% (5 - @food.spice_level).times do %>
+        <i class="bi bi-fire text-secondary"></i>
+        <% end %>
+        </h4>
+        <h4 class="fw-bold pt-3">
+        価格
+        <%= number_to_currency(@food.price, unit: "円", format: "%n%u") %>
+        </h4>
+        <p class="fw-bold pt-3"><%= @food.title %></p>
+        <p class="fw-bold"><%= @food.body %></p>
     </div>
-    <% end %>
-
 </div>
 
+<div class="album py-5 bg-light">
+  <!-- ページネーション -->
+  <div class="container text-end text-primary">
+    <%= link_to '新しい順', foods_path(sort: 'new') %>
+    <%= link_to '古い順', foods_path(sort: 'old') %>
+  </div>
 
-  
 
-
-
-
+<div class="container">
+    <div class="row">
+        <% @reviews.each do |review| %>
+        <div class="col-4 pt-5">
+            <div class="card shadow h-100 d-flex flex-row">
+                <!-- レビュー写真 -->
+                <div class="card-body d-flex flex-column justify-content-center">
+                <!-- ユーザー名 -->
+                <h3 class="card-title"><%= link_to review.user.name, user_path(review.user) %></h3>
+                <!-- タイトル -->
+                <h4 class="card-body"><%= review.title %></h4>
+                <!-- 評価 -->
+                <h4 class="card-body"><%= review.rating %></h4>
+                <!-- 辛さレベル -->
+                <h4 class="card-body fw-bold mt-2">
+                    辛さレベル
+                    <% review.spice_level.times do %>
+                        <i class="bi bi-fire text-danger"></i>
+                    <% end %>
+                    <% (5 - review.spice_level).times do %>
+                        <i class="bi bi-fire text-secondary"></i>
+                    <% end %>
+                </h4>
+                <!-- ボタンと時間 -->
+                <div class="d-flex justify-content-between align-items-center mt-auto">
+                    <div class="btn-group mt-2">
+                    <button type="button" class="btn btn-md btn-outline-primary">編集</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <!-- ページネーション -->
+    <div class="mt-5">
+        <%= paginate @reviews, theme: 'bootstrap-5' %>
+    </div>
+</div>

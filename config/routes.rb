@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
-  # 新規ユーザー作成ページ（8/12追加）
-  resources :users, only: %i[new create]
+  # ユーザーページ（8/12追加）
+  resources :users, only: %i[new create show]
 
   # ログインページ（8/12追加）
   # /loginにアクセスされた場合、user_sessionsコントローラーのnewアクションを呼び出す
@@ -19,7 +19,4 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   # /logoutに対してDELETEリクエストが送信された場合、user_sessionsコントローラーのdestroyアクションを呼び出す
   delete 'logout', to: 'user_sessions#destroy'
-
-  resources :reviews, only: %i[show]
-
 end

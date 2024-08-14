@@ -70,4 +70,8 @@ Rails.application.configure do
 
   # 許可するホストを追加
   config.hosts << "gekikara-dou.fly.dev"
+
+  # rails s のホットリロード機能
+  config.assets.debug = true
+  config.assets.compile = true
 end
