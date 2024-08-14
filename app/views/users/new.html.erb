@@ -13,10 +13,13 @@
             <%= f.password_field :password, placeholder:"Password" %>
         </div>
         <div class="form-item">
-            <%= f.password_field :password_confirmation, placeholder:"Password" %>    
+            <%= f.password_field :password_confirmation, placeholder:"Password（確認用）" %>    
         </div>
         <div class="button-panel">
             <%= f.submit "登録する", class:"button" %> 
         </div>
     <% end %>
+    <div class="form-footer">
+        <p><%= link_to 'ログインする', login_path %></p>
+    </div>
 </div>
