@@ -4,3 +4,5 @@
 //= link_tree ../../../vendor/javascript .js
 
 //= link_tree ../fonts
+
+//= link bootswatch/bootstrap.css

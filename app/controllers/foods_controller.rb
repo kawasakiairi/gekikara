@@ -33,6 +33,16 @@ class FoodsController < ApplicationController
   def show
     @food = Food.find(params[:id])
     @reviews = @food.reviews # ここで関連するレビューを取得（8/13追加）
+
+    # ページネーション（8/11追加）
+    sort_order = case params[:sort]
+    when 'old'
+      'created_at ASC'
+    else
+      'created_at DESC'
+    end
+
+    @reviews = @reviews.order(sort_order).page(params[:page]).per(6)
   end
 
   private

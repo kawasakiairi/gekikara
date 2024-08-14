@@ -40,6 +40,7 @@ gem 'sassc-rails'
 
 # ページネーション（8/11追加）
 gem 'kaminari'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 
 # CarrieWaveの設定（8/12追加）
 gem 'carrierwave', '~> 2.0'

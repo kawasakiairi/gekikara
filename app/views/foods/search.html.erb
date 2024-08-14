@@ -1,39 +1,54 @@
-<div class="container pt-3">
-
-<!-- 検索フォーム -->
-<h1> 検索フォーム</h1>
-
-<!-- 条件検索機能-->
-<%= form_with(scope: :search, url: foods_path, method: :get, local: true) do |f| %>
-  <!-- 国から探す（セレクトボックス） -->
-  <div>
-    国から探す
-    <%= f.collection_select(:food_country_id, FoodCountry.all, :id, :name, { selected: @search_params[:food_country_id], include_blank: true }) %>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="fw-bold">激辛、ドウ？</h1>
   </div>
+</section>
 
-  <!-- カテゴリから探す（セレクトボックス） -->
-  <div>
-    カテゴリから探す
-    <%= f.collection_select(:food_category_id, FoodCategory.all, :id, :name, { selected: @search_params[:food_category_id], include_blank: true }) %>
+<div class="container bg-primary">
+  <div class="row">
+    <div class="col-6">
+      aaa
+    </div>
+    <div class="col-6">
+      aaa
+    </div>
   </div>
+</div>
 
-  <!-- 値段から探す（範囲指定） -->
-  <div>
-    値段から探す
-    <%= f.number_field :price_from, value: @search_params[:price_from] %> ~ <%= f.number_field :price_to, value: @search_params[:price_to] %>
+
+<div class="container text-center">
+  <!-- 検索フォーム -->
+  <h1 class="text-white"> 検索フォーム</h1>
+  <br>
+  <div class="row row-cols-2 bg-white">
+    <!-- 条件検索機能-->
+    <%= form_with(scope: :search, url: foods_path, method: :get, local: true) do |f| %>
+    <div class="col">
+      <!-- 国から探す（セレクトボックス） -->
+      国から探す
+      <%= f.collection_select(:food_country_id, FoodCountry.all, :id, :name, { selected: @search_params[:food_country_id], include_blank: true }) %>
+    </div>
+    <div class="col">
+      <!-- カテゴリから探す（セレクトボックス） -->
+      カテゴリから探す
+      <%= f.collection_select(:food_category_id, FoodCategory.all, :id, :name, { selected: @search_params[:food_category_id], include_blank: true }) %>
+    </div>
+    <div class="col">
+      <!-- 値段から探す（範囲指定） -->
+      値段から探す
+      <%= f.number_field :price_from, value: @search_params[:price_from] %> ~ <%= f.number_field :price_to, value: @search_params[:price_to] %>
+    </div>
+    <div class="col">
+      <!-- キーワードから探す（テキストフィールド） -->
+      キーワードから探す
+      <%= f.text_field :keyword, value: @search_params[:keyword] %>
+    </div>
+
+    <!-- 検索する -->
+    <div>
+      <%= f.submit "検索する" %>
+    </div>
+
+  <% end %>
   </div>
-
-  <!-- キーワードから探す（テキストフィールド） -->
-  <div>
-    キーワードから探す
-    <%= f.text_field :keyword, value: @search_params[:keyword] %>
-  </div>
-
-  <!-- 検索する -->
-  <div>
-    <%= f.submit "検索する" %>
-  </div>
-
-<% end %>
-
 </div>

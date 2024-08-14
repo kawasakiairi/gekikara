@@ -1,43 +1,69 @@
-<div class="container pt-3">
-  <h2 class="mb-4">あなたにぴったりの激辛食品が<span style="font-size: 1em; color: #ff0000;"><%= @total_count %>件</span>見つかりました。</h2>
-
-  <div class="text-end">  
-    <%= link_to '新しい順', foods_path(sort: 'new'), class: 'text-black' %>
-    <%= link_to '古い順', foods_path(sort: 'old'), class: 'text-black' %>
-    <%= link_to '辛い順', foods_path(sort: 'hot'), class: 'text-black' %>
-    <%= link_to '辛くない順', foods_path(sort: 'mild'), class: 'text-black' %>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="fw-bold">検索結果：<span class="text-primary"><%= @total_count %></span>件</h1>
+    <p class="lead text-muted">あなたにぴったりの激辛食品あああああああああああああああ</p>
   </div>
-  <hr class="my-4 border border-brack border-3 ">
-  <div class="row">
-    <% @foods.each do |food| %>
-      <div class="col-md-6 mb-4">
-        <div class="card h-100 border-danger" style="border-width: 4px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <%= image_tag(food.food_image.present? ? food.food_image.url : "image_ramen.png", class: "img-fluid mx-auto d-block") %>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h4 class="card-title fw-bold">
-                  <%= link_to food.name, food_path(food) %>
-                </h4>
-                <span class="badge bg-danger"><%= food.food_category.name %></span>
-                <p class="card-text fw-bold">
-                  辛さレベル 
-                  <% food.spice_level.times do %>
-                    <i class="bi bi-fire text-danger"></i>
-                  <% end %>
-                  <% (5 - food.spice_level).times do %>
-                    <i class="bi bi-fire text-secondary"></i>
-                  <% end %>
-                </p>
-                <p class="card-text fw-bold">希望小売価格 <%= number_to_currency(food.price, unit: "円", format: "%n%u") %> (税別)</p>
+</section>
+
+<div class="album py-5 bg-light">
+  <!-- ページネーション -->
+  <div class="container text-end text-primary">
+    <%= link_to '新しい順', foods_path(sort: 'new') %>
+    <%= link_to '古い順', foods_path(sort: 'old') %>
+    <%= link_to '辛い順', foods_path(sort: 'hot') %>
+    <%= link_to '辛くない順', foods_path(sort: 'mild') %>
+  </div>
+
+  <!-- 検索結果概要 -->
+  <div class="container">
+    <div class="row">
+      <% @foods.each do |food| %>
+      <div class="col-6 pt-5">
+        <div class="card shadow h-100 d-flex flex-row">
+          <!-- 食品写真 -->
+          <div class="d-flex justify-content-center align-items-center" style="padding: 10px;">
+            <%= image_tag(food.food_image.present? ? food.food_image.url : "image_ramen.png", class: "img-fluid", style: "width: 150px; height: 150px; object-fit: cover;") %>
+          </div>
+          <div class="card-body d-flex flex-column justify-content-center">
+            <!-- 食品名 -->
+            <h3 class="card-text fw-bold mt-2" style="min-height: 3rem;"><%= link_to food.name, food_path(food) %></h3>
+            <!-- 食品タグ -->
+            <h4 class="fw-bold">
+              <span class="badge rounded-pill bg-primary"><%= food.food_category.name %></span>
+            </h4>
+            <!-- 辛さレベル -->
+            <h4 class="card-text fw-bold mt-2">
+              辛さレベル　
+              <% food.spice_level.times do %>
+                <i class="bi bi-fire text-danger"></i>
+              <% end %>
+              <% (5 - food.spice_level).times do %>
+                <i class="bi bi-fire text-secondary"></i>
+              <% end %>
+            </h4>
+            <!-- 希望小売価格 -->
+            <h4 class="card-text fw-bold">
+              希望小売価格
+              <% if food.price != 0 %>
+                <%= number_to_currency(food.price, unit: "円", format: "%n%u") %> (税別)
+              <% else %>
+                オープン価格
+              <% end %>
+            </h4>
+            <!-- ボタンと時間 -->
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <div class="btn-group mt-2">
+                <button type="button" class="btn btn-md btn-outline-primary">編集</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <% end %>
-    <%= paginate @foods %>
+      <% end %>
+    </div>
+    <!-- ページネーション -->
+    <div class="mt-5">
+      <%= paginate @foods, theme: 'bootstrap-5' %>
+    </div>
   </div>
 </div>

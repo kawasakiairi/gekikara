@@ -1,31 +1,22 @@
-<div class="container pt-3">
-
-    <h1>ユーザー登録ページ</h1>
+<div class="form-wrapper">
+    <h1>新規登録</h1>
 
     <!-- ユーザー登録 -->
     <%= form_with model: @user do |f| %>
-        <!-- ユーザー名 -->
-        <div>
-            ユーザー名
-            <%= f.text_field :name %>
+        <div class="form-item">
+            <%= f.text_field :name, placeholder:"User Name" %>
         </div>
-        <!-- メールアドレス -->
-        <div>
-            メールアドレス
-            <%= f.text_field :email %>    
+        <div class="form-item">
+            <%= f.text_field :email, placeholder:"Email Address" %>
         </div>
-        <!-- パスワード -->
-        <div>
-            パスワード
-            <%= f.password_field :password %>    
+        <div class="form-item">
+            <%= f.password_field :password, placeholder:"Password" %>
         </div>
-        <!-- パスワード確認用 -->
-        <div>
-            パスワード確認用
-            <%= f.password_field :password_confirmation %>    
+        <div class="form-item">
+            <%= f.password_field :password_confirmation, placeholder:"Password" %>    
         </div>
-        <div>
-            <%= f.submit "登録する" %>    
+        <div class="button-panel">
+            <%= f.submit "登録する", class:"button" %> 
         </div>
     <% end %>
 </div>
