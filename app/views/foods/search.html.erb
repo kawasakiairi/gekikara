@@ -1,6 +1,11 @@
-<div class="search-wrapper">
-  <h1>激辛、ドウ？</h1>
+<!-- パンくずリスト -->
+<% breadcrumb :root %>
 
+<div class="container my-5">
+  <h1>激辛、ドウ？</h1>
+</div>
+
+<div class="search-wrapper">
   <!-- 条件検索機能-->
   <%= form_with(scope: :search, url: foods_path, method: :get, local: true) do |f| %>
     <div class="search-item">
