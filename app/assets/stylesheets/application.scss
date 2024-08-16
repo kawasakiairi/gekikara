@@ -5,9 +5,26 @@
 
 /* 
 ---------------------------------------------
+共通画面のCSS（8/15追加）
+--------------------------------------------- 
+*/
+
+h1 {
+    font-weight: bold;
+    font-size: 2.5em;
+    text-align: center;   
+}
+
+.container {
+    max-width: 1000px;
+}
+
+/* 
+---------------------------------------------
 ログイン画面のCSS（8/15追加）
 --------------------------------------------- 
 */
+
 .form-wrapper {
     background: #fafafa;
     margin: 3em auto;
@@ -15,10 +32,6 @@
     max-width: 370px;
 }
 
-h1 {
-    text-align: center;
-    padding: 1em 0;
-}
 
 form {
     padding: 0 1.5em;
@@ -91,27 +104,6 @@ form {
 検索画面のCSS（8/15追加）
 --------------------------------------------- 
 */
-.search-wrapper {
-    background: #fafafa;
-    margin: 3em auto;
-    padding: 0 1em;
-    max-width: 1000px;
-}
-
-h1 {
-    text-align: center;
-    padding: 1em 0;
-}
-
-form {
-    padding: 0 1.5em;
-}
-
-.search-item {
-    margin-bottom: 0.75em;
-    width: 100%;
-}
-
 .search-item input {
     background: #fafafa;
     border: none;
@@ -155,26 +147,34 @@ form {
 
 /* 
 ---------------------------------------------
-food_index Style
+食品詳細のCSS（8/15追加）
 --------------------------------------------- 
 */
 
-.jumbotron {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    margin-bottom: 0;
-    background-color: #fff;
-  }
+.fixed-width-image {
+    width: 350px;
+    height: auto;
+    border: 1px solid #cfcfcf;
+    margin-left: 100px;
+}
 
-  .jumbotron p:last-child {
-    margin-bottom: 0;
-  }
-  
-  .jumbotron h1 {
-    font-weight: 300;
-  }
-  
-  .jumbotron .container {
-    max-width: 40rem;
-  }
-  
+  /* 
+---------------------------------------------
+ユーザーページのCSS（8/15追加）
+--------------------------------------------- 
+*/
+
+.user-image {
+    width: 300px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #cfcfcf;
+}
+
+.user-form {
+    background: #fafafa;
+    margin: 3em auto;
+    padding: 0 1em;
+    max-width: 800px;
+
+}

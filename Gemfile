@@ -48,3 +48,6 @@ gem 'carrierwave', '~> 2.0'
 # sorceryの導入（8/12追加）
 gem 'oauth2'  # 外部プロバイダー
 gem 'sorcery', "0.16.3"
+
+# パンくずリスト（8/15追加）
+gem 'gretel'
