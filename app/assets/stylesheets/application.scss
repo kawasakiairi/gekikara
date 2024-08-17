@@ -80,9 +80,19 @@ form {
 検索画面(TOPページ)のCSS（8/15追加）
 --------------------------------------------- 
 */
+.title {
+    font-weight: bold;
+    margin-top: 20vh;
+    text-align: center;
+    font-size: 2rem; 
+}
+
 .search-wrapper {
-    margin: 5em auto;
-    padding: 5em 5em;
+    margin-top: 30vh;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(-50%);
+    padding: 3em 1em;
     max-width: 960px;
     background: #fff;
     border: 10px solid var(--bs-primary);
