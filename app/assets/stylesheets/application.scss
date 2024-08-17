@@ -16,7 +16,11 @@ h1 {
 }
 
 .container {
+<<<<<<< HEAD
+    max-width: 960px;
+=======
     max-width: 1000px;
+>>>>>>> origin/main
 }
 
 /* 
@@ -59,30 +63,6 @@ form {
     outline: none;
 }
 
-.button-panel {
-    margin: 2em 0 0;
-    width: 100%;
-}
-
-.button-panel .button {
-    background: #f16272;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 100%;
-}
-
-.button:hover {
-    background: #ee3e52;
-}
-
 .form-footer {
     font-size: 1em;
     padding: 2em 0;
@@ -101,9 +81,18 @@ form {
 
 /* 
 ---------------------------------------------
-検索画面のCSS（8/15追加）
+検索画面(TOPページ)のCSS（8/15追加）
 --------------------------------------------- 
 */
+<<<<<<< HEAD
+.search-wrapper {
+    margin: 5em auto;
+    padding: 5em 5em;
+    max-width: 960px;
+    background: #fff;
+    border: 10px solid var(--bs-primary);
+    border-radius: 20px;
+=======
 .search-item input {
     background: #fafafa;
     border: none;
@@ -143,6 +132,7 @@ form {
 
 .button:hover {
     background: #ee3e52;
+>>>>>>> origin/main
 }
 
 /* 
@@ -177,4 +167,8 @@ form {
     padding: 0 1em;
     max-width: 800px;
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

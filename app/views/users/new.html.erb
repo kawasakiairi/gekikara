@@ -15,9 +15,8 @@
         <div class="form-item">
             <%= f.password_field :password_confirmation, placeholder:"Password（確認用）" %>    
         </div>
-        <div class="button-panel">
-            <%= f.submit "登録する", class:"button" %> 
-        </div>
+        <!-- 登録する -->
+        <%= f.submit "登録する", class:"btn btn-lg btn-primary w-100" %>
     <% end %>
     <div class="form-footer">
         <p><%= link_to 'ログインする', login_path %></p>
