@@ -1,5 +1,17 @@
-<!-- ユーザーページ -->
+<!-- パンくずリスト -->
+<% breadcrumb :user_show, @user %>
 
-<h1>ユーザーページ</h1>
+<div class="container my-5">
+  <h1><%= @user.name %>のページ</h1>
+</div>
 
-<%= @user.name %>
+<div class="user-form mt-5 text-center">
+    <%= image_tag(@user.profile_image.url, class: "my-5 rounded-circle user-image") %>
+    <hr style="border: 1px solid #000;">
+    <div class="mt-5">
+        <h4><%= @user.name %></h4>
+    </div>
+    <div class="mt-5">
+        <h4><%= @user.comment %></h4>
+    </div>
+</div>

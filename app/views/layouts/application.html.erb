@@ -19,6 +19,8 @@
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
+    <!-- パンくずリスト（8/15追加） -->
+    <%= breadcrumbs separator: " &rsaquo; " %>
     <%= yield %>
     <!-- <%= render 'shared/footer' %> -->
   </body>

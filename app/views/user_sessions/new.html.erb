@@ -7,9 +7,8 @@
     <div class="form-item">
         <%= f.password_field :password, placeholder:"Password" %>
     </div>
-    <div class="button-panel">
-        <%= f.submit "ログインする", class:"button" %> 
-    </div>
+    <!-- ログインする -->
+    <%= f.submit "ログインする", class:"btn btn-lg btn-primary w-100" %>
   <% end %>
   <div class="form-footer">
     <p><%= link_to '会員登録する', new_user_path %></p>

@@ -5,9 +5,26 @@
 
 /* 
 ---------------------------------------------
+共通画面のCSS（8/15追加）
+--------------------------------------------- 
+*/
+
+h1 {
+    font-weight: bold;
+    font-size: 2.5em;
+    text-align: center;   
+}
+
+.container {
+    max-width: 960px;
+}
+
+/* 
+---------------------------------------------
 ログイン画面のCSS（8/15追加）
 --------------------------------------------- 
 */
+
 .form-wrapper {
     background: #fafafa;
     margin: 3em auto;
@@ -15,10 +32,6 @@
     max-width: 370px;
 }
 
-h1 {
-    text-align: center;
-    padding: 1em 0;
-}
 
 form {
     padding: 0 1.5em;
@@ -46,30 +59,6 @@ form {
     outline: none;
 }
 
-.button-panel {
-    margin: 2em 0 0;
-    width: 100%;
-}
-
-.button-panel .button {
-    background: #f16272;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 100%;
-}
-
-.button:hover {
-    background: #ee3e52;
-}
-
 .form-footer {
     font-size: 1em;
     padding: 2em 0;
@@ -88,93 +77,48 @@ form {
 
 /* 
 ---------------------------------------------
-検索画面のCSS（8/15追加）
+検索画面(TOPページ)のCSS（8/15追加）
 --------------------------------------------- 
 */
 .search-wrapper {
-    background: #fafafa;
-    margin: 3em auto;
-    padding: 0 1em;
-    max-width: 1000px;
-}
-
-h1 {
-    text-align: center;
-    padding: 1em 0;
-}
-
-form {
-    padding: 0 1.5em;
-}
-
-.search-item {
-    margin-bottom: 0.75em;
-    width: 100%;
-}
-
-.search-item input {
-    background: #fafafa;
-    border: none;
-    border-bottom: 2px solid #e9e9e9;
-    color: #666;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
-    height: 50px;
-    transition: border-color 0.3s;
-    width: 100%;
-}
-
-.search-item input:focus {
-    border-bottom: 2px solid #c0c0c0;
-    outline: none;
-}
-
-.button-panel {
-    margin: 2em 0 0;
-    width: 100%;
-}
-
-.button-panel .button {
-    background: #f16272;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 100%;
-}
-
-.button:hover {
-    background: #ee3e52;
+    margin: 5em auto;
+    padding: 5em 5em;
+    max-width: 960px;
+    background: #fff;
+    border: 10px solid var(--bs-primary);
+    border-radius: 20px;
 }
 
 /* 
 ---------------------------------------------
-food_index Style
+食品詳細のCSS（8/15追加）
 --------------------------------------------- 
 */
 
-.jumbotron {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    margin-bottom: 0;
-    background-color: #fff;
-  }
+.fixed-width-image {
+    width: 350px;
+    height: auto;
+    border: 1px solid #cfcfcf;
+    margin-left: 100px;
+}
 
-  .jumbotron p:last-child {
-    margin-bottom: 0;
-  }
-  
-  .jumbotron h1 {
-    font-weight: 300;
-  }
-  
-  .jumbotron .container {
-    max-width: 40rem;
-  }
-  
+  /* 
+---------------------------------------------
+ユーザーページのCSS（8/15追加）
+--------------------------------------------- 
+*/
+
+.user-image {
+    width: 300px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #cfcfcf;
+}
+
+.user-form {
+    background: #fafafa;
+    margin: 3em auto;
+    padding: 0 1em;
+    max-width: 800px;
+
+}

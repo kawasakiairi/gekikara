@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_13_153522) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_16_070843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorite_foods", comment: "お気に入り食品", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "food_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_favorite_foods_on_food_id"
+    t.index ["user_id", "food_id"], name: "index_favorite_foods_on_user_id_and_food_id", unique: true
+    t.index ["user_id"], name: "index_favorite_foods_on_user_id"
+  end
 
   create_table "food_categories", comment: "食品カテゴリ", force: :cascade do |t|
     t.string "name", comment: "食品カテゴリ名"
@@ -60,9 +70,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_153522) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", null: false, comment: "名前"
+    t.string "comment"
+    t.string "profile_image", comment: "プロフィール画像"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "favorite_foods", "foods"
+  add_foreign_key "favorite_foods", "users"
   add_foreign_key "foods", "food_categories", on_update: :restrict, on_delete: :restrict
   add_foreign_key "foods", "food_countries", on_update: :restrict, on_delete: :restrict
   add_foreign_key "reviews", "foods", on_update: :cascade, on_delete: :cascade
