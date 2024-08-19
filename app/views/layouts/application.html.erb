@@ -11,13 +11,22 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= @body_class %>">
     <!-- ログイン/未ログイン状態による切り替え（8/12追加） -->
     <!-- sorceryを使用している場合に提供されるメソッド -->
     <% if logged_in? %>
-      <%= render 'shared/header' %>
+      <!-- TOPページ（foods#search）の場合（8/19追加） -->
+      <% if @header_type == "search_header" %>
+        <%= render 'shared/search_header' %>
+      <% else %>
+        <%= render 'shared/header' %>
+      <% end %>
     <% else %>
-      <%= render 'shared/before_login_header' %>
+      <% if @header_type == "search_header" %>
+        <%= render 'shared/search_before_login_header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
     <% end %>
     <!-- パンくずリスト（8/15追加） -->
     <%= breadcrumbs separator: " &rsaquo; " %>

@@ -80,6 +80,16 @@ form {
 検索画面(TOPページ)のCSS（8/15追加）
 --------------------------------------------- 
 */
+
+.search-background {
+    background-image: url('back-ground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 30vh;
+    width: 100vw;
+  }
+
 .title {
     font-weight: bold;
     margin-top: 20vh;
@@ -95,8 +105,16 @@ form {
     padding: 3em 1em;
     max-width: 960px;
     background: #fff;
-    border: 10px solid var(--bs-primary);
+    border: 10px solid;
     border-radius: 20px;
+}
+
+.form-select {
+    border-width: 4px; /* お好みの太さに変更 */
+}
+
+.form-control {
+    border-width: 4px; /* お好みの太さに変更 */
 }
 
 /* 

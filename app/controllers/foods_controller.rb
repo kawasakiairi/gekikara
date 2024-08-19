@@ -25,6 +25,8 @@ class FoodsController < ApplicationController
 
   # トップページ（8/11追加）
   def search
+    @header_type = "search_header"
+    @body_class = "search-background bg-primary"
     # 初期化処理
     @search_params = {}
   end
