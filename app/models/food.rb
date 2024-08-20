@@ -12,13 +12,12 @@ class Food < ApplicationRecord
     # search_paramsが空の場合以降の処理を行わない。
     return if search_params.blank?
 
-  # パラメータを指定して検索する
-  food_country_id_is(search_params[:food_country_id])
-    .food_category_id_is(search_params[:food_category_id])
-    .price_from(search_params[:price_from])
-    .price_to(search_params[:price_to])
-    .keyword_like(search_params[:keyword])
-
+    # パラメータを指定して検索する
+    food_country_id_is(search_params[:food_country_id])
+      .food_category_id_is(search_params[:food_category_id])
+      .price_from(search_params[:price_from])
+      .price_to(search_params[:price_to])
+      .keyword_like(search_params[:keyword])
   end
 
   scope :food_country_id_is, -> (food_country_id) { where(food_country_id: food_country_id) if food_country_id.present? }
@@ -36,8 +35,4 @@ class Food < ApplicationRecord
            title LIKE :keyword OR
            body LIKE :keyword', keyword: "%#{keyword}%") if keyword.present?
   }
-
-  def favorited?(user)
-    favorite_foods.where(user_id: user.id).exists?
- end
 end

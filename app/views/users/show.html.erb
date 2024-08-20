@@ -20,21 +20,47 @@
             </h2>
         </div>
 
-        <div class="user-show-tag">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <!-- お気に入りタブ（8/20追記） -->
+        <div class="user-show-tab">
+            <ul class="nav pt-3" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                    <a class="nav-link fw-bold active" id="food-tab" data-bs-toggle="tab" data-bs-target="#food" type="button" role="tab" aria-controls="food" aria-selected="true">
+                        お気に入り食品
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                    <a class="nav-link fw-bold" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">
+                        お気に入りレビュー
+                    </a>
                 </li>
             </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    HOME
+            <!-- コンテンツ詳細（8/20追加） -->
+            <div class="tab-content px-5" id="myTabContent">
+                <div class="tab-pane py-5 fade show active" id="food" role="tabpanel" aria-labelledby="food-tab">
+                    <% 5.times do |i| %>
+                        <div class="card mb-3" style="width: 50rem;">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Primary card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div> 
+                    <% end %>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    PROFILE
+                <div class="tab-pane py-5 fw-bold text-center fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
+                    <p>お気に入りレビュー</p>
                 </div>
             </div>
         </div>
