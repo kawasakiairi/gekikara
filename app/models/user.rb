@@ -3,10 +3,6 @@ class User < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
 
-  # お気に入り食品機能
-  has_many :foods, dependent: :destroy
-  has_many :favorite_foods, dependent: :destroy
-
   mount_uploader :profile_image, ProfileImageUploader
 
   # ユーザーが設定したパスワードの長さが3文字以上であることを確認

@@ -4,10 +4,6 @@ class Food < ApplicationRecord
   belongs_to :food_country
   has_many :reviews, dependent: :destroy
 
-  # お気に入り食品機能
-  belongs_to :user
-  has_many :favorite_foods, dependent: :destroy
-
   # FoodモデルでCarrierWaveを使用するように設定（8/12追加）
   mount_uploader :food_image, FoodImageUploader
 

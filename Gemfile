@@ -37,6 +37,7 @@ gem "dockerfile-rails", ">= 1.6", :group => :development
 # Bootstrap導入（8/9追加）
 gem 'bootstrap'
 gem 'sassc-rails'
+gem 'jquery-rails'
 
 # ページネーション（8/11追加）
 gem 'kaminari'
@@ -51,3 +52,6 @@ gem 'sorcery', "0.16.3"
 
 # パンくずリスト（8/15追加）
 gem 'gretel'
+
+# デフォルトの言語を日本語に設定（8/19追加）
+gem 'rails-i18n'
