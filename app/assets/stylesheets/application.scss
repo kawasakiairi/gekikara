@@ -187,7 +187,7 @@ h1 {
     width: 960px;
 }
 
-.user-show-tag {
+.user-show-tab {
     position: absolute;
     top: 700px;
     left: 50%;
@@ -195,14 +195,50 @@ h1 {
     width: 960px;
 }
 
-.user-show-tag .nav-tabs .nav-item {
-    width: 480px; /* タブの幅を480pxに設定 */
+.user-show-tab .nav {
+    background-color: #fff;
+    display: flex; /* Flexboxを使用 */
+    justify-content: center; /* 中央揃え */
 }
 
-.user-show-tag .nav-tabs .nav-link {
-    text-align: center; /* テキストを中央に配置 */
-    display: block; /* リンクをブロック要素として表示 */
+.user-show-tab .nav-item {
+    text-align: center;
+    font-size: 1.5rem;
+    width: 430px; 
 }
+
+.user-show-tab .nav {
+    background-color: #fff;
+    display: flex; /* Flexboxを使用 */
+    justify-content: center; /* 中央揃え */
+}
+
+.user-show-tab .nav-link {
+    position: relative;
+    color: black;
+    transition: color 0.3s;
+}
+
+.user-show-tab .nav-link.active {
+    color: red; /* アクティブなタブのテキスト色 */
+}
+
+.user-show-tab .nav-link.active::after {
+    content: ''; /* 疑似要素を表示するために必要 */
+    position: absolute;
+    left: 50%; /* 中央から開始 */
+    bottom: -2px; /* テキストの下に配置 */
+    transform: translateX(-50%); /* 中央揃え */
+    width: 30%; /* 下線の長さを調整（例: 50%） */
+    border-bottom: 4px solid red; /* 下線のスタイル */
+}
+
+.tab-content {
+    background-color: #fff;
+}
+
+
+
 
 /* 
 ---------------------------------------------
