@@ -1,8 +1,18 @@
 class FoodsController < ApplicationController
   skip_before_action :require_login, only: %i[index search show]
 
+  # トップページ（8/11追加）
+  def search
+    @header_type = "search_header"
+    @body_class = "search-background bg-primary"
+    # 初期化処理
+    @search_params = {}
+  end
+
   # 食品検索結果一覧ページ（8/11追加）
   def index
+    @body_class = "background"
+
     @search_params = food_search_params
     @foods = Food.search(@search_params).includes(:food_category, :food_country)
 
@@ -18,21 +28,17 @@ class FoodsController < ApplicationController
       'created_at DESC'
     end
 
+    # 現在のソートオプションを保存（8/19追加）
+    @current_sort = params[:sort] || 'new'
+
     @total_count = @foods.count
-    @foods = @foods.order(sort_order).page(params[:page]).per(6)
-
-  end
-
-  # トップページ（8/11追加）
-  def search
-    @header_type = "search_header"
-    @body_class = "search-background bg-primary"
-    # 初期化処理
-    @search_params = {}
+    @foods = @foods.order(sort_order).page(params[:page]).per(10)
   end
 
   # 食品詳細表示ページ
   def show
+    @body_class = "background"
+
     @food = Food.find(params[:id])
     @reviews = @food.reviews # ここで関連するレビューを取得（8/13追加）
 
@@ -44,6 +50,7 @@ class FoodsController < ApplicationController
       'created_at DESC'
     end
 
+    @current_sort = params[:sort] || 'new'
     @reviews = @reviews.order(sort_order).page(params[:page]).per(6)
   end
 

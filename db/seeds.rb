@@ -2,8 +2,8 @@ ApplicationRecord.transaction do
   Food.delete_all
   FoodCategory.delete_all
   FoodCountry.delete_all
-  User.delete_all
   Review.delete_all
+  User.delete_all
 
   # FoodCategoryモデル追加（8/11追加）
   FoodCategory.find_or_create_by(id: 1) { |category| category.update(name: 'ラーメン') }
@@ -52,11 +52,11 @@ ApplicationRecord.transaction do
   User.create(id: 7, name: '小瀧望', email: 'kotaki_nozomu@west.com', password: 'password', password_confirmation: 'password', comment: '小瀧望です。', profile_image: File.open(Rails.root.join('db/seeds/users/kirin-piyotaso.png')))
 
   # Reviewモデル（8/13追加）
-  Review.create(id: 1, title: 'めっちゃ美味しい1', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: '1', user_id: '1')
-  Review.create(id: 2, title: 'めっちゃ美味しい2', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: '1', user_id: '2')
-  Review.create(id: 3, title: 'めっちゃ美味しい3', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: '1', user_id: '3')
-  Review.create(id: 4, title: 'めっちゃ美味しい4', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: '1', user_id: '4')
-  Review.create(id: 5, title: 'めっちゃ美味しい5', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: '1', user_id: '5')
-  Review.create(id: 6, title: 'めっちゃ美味しい6', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: '1', user_id: '6')
-  Review.create(id: 7, title: 'めっちゃ美味しい7', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: '1', user_id: '7')
+  Review.create(id: 1, title: 'めっちゃ美味しい1', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 1)
+  Review.create(id: 2, title: 'めっちゃ美味しい2', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 2)
+  Review.create(id: 3, title: 'めっちゃ美味しい3', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 3)
+  Review.create(id: 4, title: 'めっちゃ美味しい4', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 4)
+  Review.create(id: 5, title: 'めっちゃ美味しい5', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 5)
+  Review.create(id: 6, title: 'めっちゃ美味しい6', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 6)
+  Review.create(id: 8, title: 'ああああああああああああああああああああ', rating: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, animi officiis veniam est, modi soluta non impedit consequuntur cupiditate exercitationem expedita porro. Architecto a ab, beatae pariatur sequi ipsa facilis?', spice_level: 4, food_id: 1, user_id: 7)
 end

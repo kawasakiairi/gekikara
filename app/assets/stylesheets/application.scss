@@ -3,20 +3,205 @@
 @import "bootstrap-icons";
 @import "bootswatch/bootstrap";
 
-/* 
----------------------------------------------
-共通画面のCSS（8/15追加）
---------------------------------------------- 
-*/
+/* 共通画面のCSS（8/15追加） */
+.background {
+    background-color: #fafafa;
+}
+
+.container {
+    width: 960px;
+}
 
 h1 {
     font-weight: bold;
     font-size: 2.5em;
-    text-align: center;   
+    text-align: center;  
 }
 
-.container {
-    max-width: 960px;
+/* 検索画面(food#search)のCSS（8/15追加） */
+.search-background {
+    background-image: url('back-ground.jpg');
+    background-size: cover; /* 背景画像を要素のサイズに合わせる */
+    background-repeat: no-repeat; /* 背景画像を繰り返さない */
+    background-position: center; /* 画像を中央に配置 */
+    height: 300px; /* 高さを300pxに設定 */
+  }
+
+.search-title {
+    position: absolute; /* 位置を絶対指定 */
+    top: 250px; /* 要素の上端からの高さ */
+    left: 50%; /* 水平方向の中央に配置 */
+    transform: translateX(-50%); /* 水平方向の中央揃えを補正 */
+    text-align: center;
+    font-size: 2rem; 
+    color: #fff;
+    font-weight: bold;
+}
+
+.search-form {
+    position: absolute;
+    top: 450px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 3em 1em;
+    width: 960px;
+    background: #fff;
+    border: 10px solid;
+    border-radius: 20px; /* 要素の角を丸くする */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.search-border {
+    border-width: 4px;
+    border-radius: 10px;
+}
+
+.search-detail {
+    position: absolute;
+    top: 900px;
+}
+
+.search-detail .btn {
+    color: #fff;
+    border: 4px solid white;
+    border-radius: 10px;
+    width: 200px;
+    font-weight: bold; /* 文字を太くする */
+}
+
+.search-country, .search-category {
+    color: yellow;
+    font-weight: bold;
+    max-width: 480px; /* 各セクションの最大幅 */
+}
+
+/* 検索結果一覧画面(food#index)のCSS（8/15追加） */
+.index-form {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+    background: #fff;
+}
+
+.index-card {
+    border: 4px solid;
+    border-radius: 10px;
+    height: 180px;
+    width: 444px;
+    transition: transform 0.2s, box-shadow 0.2s; /* スムーズな変化を追加 */
+    display: flex;
+    flex-direction: row;
+}
+
+.index-card:hover {
+    transform: scale(1.05); /* カードを少し拡大 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を強調 */
+}
+
+.index-food-image {
+    width: 150px;
+    height: auto;
+    object-fit: cover /* 画像を切りとらない */
+}
+
+/* 食品詳細画面（food#show）のCSS（8/15追加） */
+.show-food-form {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+    background: #fff;
+}
+
+.show-food-image {
+    width: 500px;
+    height: auto;
+    object-fit: cover /* 画像を切りとらない */
+}
+
+.show-review-title {
+    position: absolute;
+    top: 900px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+}
+
+.show-review-form {
+    position: absolute;
+    top: 1080px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+    background: #fff;
+}
+
+.show-review-card {
+    border: 3px solid;
+    border-radius: 10px;
+    height: 200px;
+    width: 300px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: row;
+}
+
+.show-review-card:hover {
+    transform: scale(1.05); /* カードを少し拡大 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を強調 */
+}
+
+/* ユーザー詳細画面（user#show）のCSS（8/15追加） */
+.user-show-form {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+    height: 300px;
+
+    /* 背景画像を上部に表示 */
+    background-image: url('header.jpg');
+    background-size: cover; /* 背景画像を要素のサイズに合わせる */
+    background-repeat: no-repeat; /* 背景画像を繰り返さない */
+    background-position: center; /* 画像を中央に配置 */
+  }
+
+.user-image {
+    position: absolute;
+    top: 100px;
+    width: 300px;
+    height: auto;
+    background-color: #fff;
+    border: 3px solid #fff;
+}
+
+.user-show-text {
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+}
+
+.user-show-tag {
+    position: absolute;
+    top: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+}
+
+.user-show-tag .nav-tabs .nav-item {
+    width: 480px; /* タブの幅を480pxに設定 */
+}
+
+.user-show-tag .nav-tabs .nav-link {
+    text-align: center; /* テキストを中央に配置 */
+    display: block; /* リンクをブロック要素として表示 */
 }
 
 /* 
@@ -75,77 +260,3 @@ form {
     border-bottom: 1px dotted #8c8c8c;
 }
 
-/* 
----------------------------------------------
-検索画面(TOPページ)のCSS（8/15追加）
---------------------------------------------- 
-*/
-
-.search-background {
-    background-image: url('back-ground.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 30vh;
-    width: 100vw;
-  }
-
-.title {
-    font-weight: bold;
-    margin-top: 20vh;
-    text-align: center;
-    font-size: 2rem; 
-}
-
-.search-wrapper {
-    margin-top: 30vh;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translateY(-50%);
-    padding: 3em 1em;
-    max-width: 960px;
-    background: #fff;
-    border: 10px solid;
-    border-radius: 20px;
-}
-
-.form-select {
-    border-width: 4px; /* お好みの太さに変更 */
-}
-
-.form-control {
-    border-width: 4px; /* お好みの太さに変更 */
-}
-
-/* 
----------------------------------------------
-食品詳細のCSS（8/15追加）
---------------------------------------------- 
-*/
-
-.fixed-width-image {
-    width: 350px;
-    height: auto;
-    border: 1px solid #cfcfcf;
-    margin-left: 100px;
-}
-
-  /* 
----------------------------------------------
-ユーザーページのCSS（8/15追加）
---------------------------------------------- 
-*/
-
-.user-image {
-    width: 300px;
-    height: auto;
-    background-color: #fff;
-    border: 1px solid #cfcfcf;
-}
-
-.user-form {
-    background: #fafafa;
-    margin: 3em auto;
-    padding: 0 1em;
-    max-width: 800px;
-}

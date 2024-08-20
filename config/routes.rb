@@ -11,11 +11,7 @@ Rails.application.routes.draw do
   end
 
   # ユーザーページ（8/12追加）
-  resources :users, only: %i[new create show] do
-    member do
-      get :favorites
-    end
-  end
+  resources :users, only: %i[new create show]
 
   # ログインページ（8/12追加）
   get 'login', to: 'user_sessions#new'

@@ -6,3 +6,7 @@ import "controllers"
 import "popper"
 import "bootstrap"
 
+// タブの導入（8/20追加）
+//= require jquery3
+//= require popper
+//= require bootstrap

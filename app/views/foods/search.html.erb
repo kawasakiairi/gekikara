@@ -1,55 +1,92 @@
 <!-- パンくずリスト -->
 <% breadcrumb :root %>
 
-<div class="container my-5">
-  <div class="title text-white">
-    <h1>ゲキカラ、ドウ？</h1>
-    <p>辛さを極めるあなたに贈る、究極の激辛食品検索アプリ</p>
-  </div>
-</div>
+<div class="container mt-5">
 
-<div class="search-wrapper border-primary">
-  <!-- 条件検索機能-->
+  <!-- タイトル -->
+  <div class="search-title">
+    <h1><%= I18n.t("search.title") %></h1>
+    <p><%= I18n.t("search.subtitle") %></p>
+  </div>
+
+  <!-- 検索フォーム -->
   <%= form_with(scope: :search, url: foods_path, method: :get, local: true) do |f| %>
-  <div class="row">
-    <div class="col-4 d-flex align-items-center">
-      <h1>ピッタリの辛いものを探そう！</h1>
-    </div>
-    <div class="col-8">
-      <div class="row mb-3">
-        <div class="col-6">
-          <!-- 国から探す（セレクトボックス） -->
-          国から探す
-          <%= f.collection_select(:food_country_id, FoodCountry.all, :id, :name, { selected: @search_params[:food_country_id], include_blank: true }, { class: 'form-select search-border border-primary' }) %>
+    <div class="search-form border-primary">
+      <div class="row">
+        <div class="col-4 d-flex align-items-center">
+          <h1 class="px-3"><%= I18n.t("search.find_spicy") %></h1>
         </div>
-        <div class="col-6">
-          <!-- 値段から探す（範囲指定） -->
-          値段から探す
-          <div class="d-flex align-items-center">
-            <%= f.number_field :price_from, value: @search_params[:price_from], class:"form-control border-primary" %>
-            <span class="mx-2"> ~ </span>
-            <%= f.number_field :price_to, value: @search_params[:price_to], class:"form-control border-primary" %>
+        <div class="col-8">
+          <div class="row mt-3">
+            <div class="col-6">
+              <!-- 国から探す（セレクトボックス） -->
+              <%= f.label :food_country_id, "#{I18n.t("activerecord.attributes.food.food_country_id")}#{I18n.t("search.from")}", class: "form-label fw-bold text-primary" %>
+              <%= f.collection_select(:food_country_id, FoodCountry.all, :id, :name, { selected: @search_params[:food_country_id], include_blank: true }, { class: "form-select search-border border-primary" }) %>
+            </div>
+            <div class="col-6">
+              <!-- 値段から探す（範囲指定） -->
+              <%= f.label :price, "#{I18n.t("activerecord.attributes.food.price")}#{I18n.t("search.from")}", class: "form-label fw-bold text-primary" %>
+              <div class="d-flex align-items-center">
+                <%= f.select :price_from, options_for_select([0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].map { |price| ["#{price}円", price] }, @search_params[:price_from]), { include_blank: true }, class:"form-control search-border border-primary" %>
+                <span class="mx-2"> ~ </span>
+                <%= f.select :price_to, options_for_select([0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].map { |price| ["#{price}円", price] }, @search_params[:price_to]), { include_blank: true }, class:"form-control search-border border-primary" %>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <!-- カテゴリから探す（セレクトボックス） -->
+              <%= f.label :food_category_id, "#{I18n.t("activerecord.attributes.food.food_category_id")}#{I18n.t("search.from")}", class: "form-label fw-bold text-primary" %>
+              <%= f.collection_select(:food_category_id, FoodCategory.all, :id, :name, { selected: @search_params[:food_category_id], include_blank: true }, { class: "form-select search-border border-primary" }) %>
+            </div>
+            <div class="col-6">
+              <!-- キーワードから探す（テキストフィールド） -->
+              <%= f.label :keyword, "#{I18n.t("search.keyword")}#{I18n.t("search.from")}", class: "form-label fw-bold text-primary" %>
+              <%= f.text_field :keyword, value: @search_params[:keyword], class:"form-control search-border border-primary" %>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <%= f.submit I18n.t("buttons.search"), class:"btn btn-lg btn-primary w-100" %>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col-6">
-          <!-- カテゴリから探す（セレクトボックス） -->
-          カテゴリから探す
-          <%= f.collection_select(:food_category_id, FoodCategory.all, :id, :name, { selected: @search_params[:food_category_id], include_blank: true }, { class: 'form-select border-primary' }) %>
+    </div>
+  <% end %>
+
+  <div class="search-detail">
+    <div class="row">
+      <!-- 国から探す -->
+      <div class="col-6 search-country">
+        <div>
+          <i class="bi bi-funnel-fill me-2"></i>
+          <span><%= "#{I18n.t('activerecord.attributes.food.food_country_id')}#{I18n.t('search.from')}" %></span>
         </div>
-        <div class="col-6">
-          <!-- キーワードから探す（テキストフィールド） -->
-          キーワードから探す
-          <%= f.text_field :keyword, value: @search_params[:keyword], class:"form-control border-primary" %>
+        <div class="row mt-3 justify-content-center">
+          <% FoodCountry.all.each do |country| %>
+            <div class="col-6 mb-3">
+              <%= button_to country.name, foods_path(search: { food_country_id: country.id }), method: :get, class: "btn btn-primary" %>        
+            </div>
+          <% end %>
         </div>
       </div>
-      <div class="row mt-3">
-        <div class="col">
-          <%= f.submit "検索する", class:"btn btn-lg btn-primary w-100" %>
+
+      <!-- 食品カテゴリから探す -->
+      <div class="col-6 search-category">
+        <div>
+          <i class="bi bi-funnel-fill me-2"></i>
+          <span><%= "#{I18n.t('activerecord.attributes.food.food_category_id')}#{I18n.t('search.from')}" %></span>
+        </div>
+        <div class="row mt-3 justify-content-center">
+          <% FoodCategory.all.each do |category| %>
+            <div class="col-6 mb-3">
+                <%= button_to category.name, foods_path(search: { food_category_id: category.id }), method: :get, class: "btn btn-primary" %>        
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-  <% end %>
+
 </div>
