@@ -122,6 +122,16 @@ h1 {
     object-fit: cover /* 画像を切りとらない */
 }
 
+.show-review-flex {
+    display: flex; /* フレックスボックスを使用 */
+    align-items: center; /* 垂直方向に中央揃え */
+}
+
+.show-review-icon {
+    margin-left: auto;
+    font-size: 32px;
+}
+
 .show-review-title {
     position: absolute;
     top: 900px;
@@ -130,28 +140,32 @@ h1 {
     width: 960px;
 }
 
+.show-review-title .btn {
+    border: 4px solid white;
+    border-radius: 10px;
+    width: 200px;
+    font-weight: bold; /* 文字を太くする */
+    font-size: 1.5rem;
+}
+
+
 .show-review-form {
     position: absolute;
-    top: 1080px;
+    top: 1050px;
     left: 50%;
     transform: translateX(-50%);
     width: 960px;
-    background: #fff;
+    background-color: #fff;
 }
 
-.show-review-card {
-    border: 3px solid;
-    border-radius: 10px;
-    height: 200px;
-    width: 300px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: row;
+.show-review {
+    height: 150px;
+    width: 800px;
 }
 
-.show-review-card:hover {
-    transform: scale(1.05); /* カードを少し拡大 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を強調 */
+.more-link {
+    color: blue;
+    cursor: pointer;
 }
 
 /* ユーザー詳細画面（user#show）のCSS（8/15追加） */
