@@ -5,8 +5,3 @@ import "controllers"
 // Javascriptをインポート（8/9追加）
 import "popper"
 import "bootstrap"
-
-// タブの導入（8/20追加）
-//= require jquery3
-//= require popper
-//= require bootstrap

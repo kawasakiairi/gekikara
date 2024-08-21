@@ -51,7 +51,7 @@ class FoodsController < ApplicationController
     end
 
     @current_sort = params[:sort] || 'new'
-    @reviews = @reviews.order(sort_order).page(params[:page]).per(6)
+    @reviews = @reviews.order(sort_order).page(params[:page]).per(3)
   end
 
   private
