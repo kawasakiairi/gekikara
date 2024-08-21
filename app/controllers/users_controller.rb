@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+  class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create show]
 
   # ユーザー登録ページ（8/12追加）
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   # ユーザーページ（8/14追加）
   def show
     @body_class = "background"
-    
+
     @user = User.find(params[:id])
   end
 

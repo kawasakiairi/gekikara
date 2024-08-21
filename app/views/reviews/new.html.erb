@@ -1,3 +1,34 @@
 <h1>
     レビュー投稿
 </h1>
+
+<!-- レビュー投稿 -->
+<%= form_with model: [@food, @review] do |f| %>
+    <%= f.hidden_field :food_id, value: @food.id %>
+    <div>
+        タイトル
+        <%= f.text_field :title %>
+    </div>
+    <div>
+        感想・コメント
+        <%= f.text_area :rating %>
+    </div>
+    <div>
+        辛さレベル
+        <%= f.number_field(:spice_level, in: 1.0..5.0, step: 1) %>
+    </div>
+    <div>
+        <%= f.submit "投稿する" %>
+    </div>
+<% end %>
+
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+    <ul>
+    <% @review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
