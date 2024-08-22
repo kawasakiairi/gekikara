@@ -1,34 +1,73 @@
-<h1>
-    レビュー投稿
-</h1>
 
-<!-- レビュー投稿 -->
-<%= form_with model: [@food, @review] do |f| %>
-    <%= f.hidden_field :food_id, value: @food.id %>
-    <div>
-        タイトル
-        <%= f.text_field :title %>
-    </div>
-    <div>
-        感想・コメント
-        <%= f.text_area :rating %>
-    </div>
-    <div>
-        辛さレベル
-        <%= f.number_field(:spice_level, in: 1.0..5.0, step: 1) %>
-    </div>
-    <div>
-        <%= f.submit "投稿する" %>
-    </div>
-<% end %>
 
-<% if @review.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-    <ul>
-    <% @review.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+
+<div class="container my-5">
+
+    <!-- タイトル -->
+    <div class="text-center">
+        <h1>食品レビューを書く</h1>
+    </div>
+
+    <!-- 食品情報 -->
+    <div class="review-form">
+        <div class="row m-5">
+            <!-- 食品画像 -->
+            <div class="col-3">
+                <%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png", class: "img-fluid review-image") %>
+            </div>
+            <div class="col-9">
+                <!-- 食品名 -->
+                <h2 class="fw-bold text-primary mt-3" style="display: inline-block;"><%= @food.name %></h2>
+                <!-- 辛さレベル -->
+                <h6 class="fw-bold mt-2">
+                <%=  I18n.t("activerecord.attributes.review.spice_level") %>
+                <% @food.spice_level.times do %>
+                    <i class="bi bi-fire text-danger"></i>
+                <% end %>
+                <% (5 - @food.spice_level).times do %>
+                    <i class="bi bi-fire text-secondary"></i>
+                <% end %>
+                </h6>
+                <!-- 希望小売価格 -->
+                <h6 class="fw-bold">
+                <%=  I18n.t("activerecord.attributes.food.price") %>
+                <% if @food.price != 0 %>
+                    <%= number_to_currency(@food.price, unit: I18n.t("index.en"), format: "%n %u", precision: 0) %><%= I18n.t("index.in_price") %>
+                <% else %>
+                    <%= I18n.t("index.open_price") %>
+                <% end %>
+                </h6>
+            </div>
+            <hr class="border border-primary border-1 mt-3">
+        </div>
+
+        <!-- レビュー投稿 -->
+        <div class="m-5">
+            <%= form_with model: [@food, @review] do |f| %>
+                <%= f.hidden_field :food_id, value: @food.id %>
+                <div class="review-form-item text-primary">
+                    <p>タイトル</p>
+                    <%= f.text_field :title, class: "review-form-input border-primary" %>
+                </div>
+                <div class="review-form-item text-primary">
+                    <p>感想・コメント</p>
+                    <%= f.text_area :rating, class: "review-form-input border-primary" %>
+                </div>
+                <div class="review-form-item text-primary">
+                    <p>辛さレベル</p>
+                    <%= f.hidden_field :spice_level, id: 'spice_level_input' %>
+                    <div class="spice-level">
+                        <i class="bi bi-fire text-secondary" data-value="1"></i>
+                        <i class="bi bi-fire text-secondary" data-value="2"></i>
+                        <i class="bi bi-fire text-secondary" data-value="3"></i>
+                        <i class="bi bi-fire text-secondary" data-value="4"></i>
+                        <i class="bi bi-fire text-secondary" data-value="5"></i>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <%= f.submit "投稿する", class: "btn btn-primary mt-3" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

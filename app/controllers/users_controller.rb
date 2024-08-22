@@ -3,6 +3,8 @@
 
   # ユーザー登録ページ（8/12追加）
   def new
+    @body_class = "background"
+
     @user = User.new
   end
 
