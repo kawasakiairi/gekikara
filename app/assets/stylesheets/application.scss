@@ -108,36 +108,30 @@ h1 {
 
 /* 食品詳細画面（food#show）のCSS（8/15追加） */
 .show-food-form {
-    position: absolute;
-    top: 300px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 960px;
     background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .show-food-image {
-    width: 500px;
+    max-width: 100%;
     height: auto;
-    object-fit: cover /* 画像を切りとらない */
+    object-fit: cover;
 }
 
 .show-review-flex {
     display: flex; /* フレックスボックスを使用 */
     align-items: center; /* 垂直方向に中央揃え */
+    justify-content: space-between;
 }
 
 .show-review-icon {
-    margin-left: auto;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .show-review-title {
-    position: absolute;
-    top: 900px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 960px;
+    margin-bottom: 20px;
 }
 
 .show-review-title .btn {
@@ -149,22 +143,15 @@ h1 {
 }
 
 .show-review-form {
-    position: absolute;
-    top: 1050px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 960px;
     background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .show-review {
     height: 150px;
     width: 800px;
-}
-
-.more-link {
-    color: blue;
-    cursor: pointer;
 }
 
 /* ユーザー詳細画面（user#show）のCSS（8/15追加） */

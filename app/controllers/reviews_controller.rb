@@ -38,6 +38,19 @@ class ReviewsController < ApplicationController
     end
   end
 
+  # レビュー削除
+  def destroy
+    @food = Food.find(params[:food_id])
+    @review = @food.reviews.find(params[:id])
+    @review.destroy!
+
+    if @review.destroy
+      redirect_to food_path(@food), notice: 'レビューが削除されました。', status: :see_other
+    else
+      redirect_to food_path(@food), alert: 'レビューの削除に失敗しました。', status: :unprocessable_entity
+    end
+  end
+
   private
 
   def review_params
