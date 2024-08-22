@@ -99,7 +99,11 @@
                 <div class="show-review-icon mb-0 me-4 p-0">
                   <% if current_user == review.user %>
                     <!-- 編集タグ -->
-                    <i class="bi bi-pencil-fill"></i>
+                    <% @reviews.each do |review| %>
+                      <%= link_to edit_food_review_path(@food, review) do %>
+                        <i class="bi bi-pencil-fill"></i>
+                      <% end %>
+                    <% end %>
                     <!-- 削除タグ -->
                     <i class="bi bi-trash"></i>
                   <% end %>
