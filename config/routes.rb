@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get :search
     end
     # レビューページ（8/21追加）
-    resources :reviews, only: %i[new create edit update]
+    resources :reviews, only: %i[new create edit update destroy]
   end
 
   # ユーザーページ（8/12追加）
