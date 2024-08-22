@@ -8,3 +8,5 @@ import "bootstrap"
 
 import _ from "lodash";
 import './spice_level';
+import './text_area';
+import './text_field';

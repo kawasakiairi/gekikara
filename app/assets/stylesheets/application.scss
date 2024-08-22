@@ -129,7 +129,7 @@ h1 {
 
 .show-review-icon {
     margin-left: auto;
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .show-review-title {
@@ -272,32 +272,32 @@ h1 {
     margin-top: 1rem;
 }
 
-.review-form-item p {
+.review-form-item h6 {
     width: 200px; /* タイトルの固定幅を設定 */
     margin: 0;
     font-weight: bold;
 }
 
-.review-form-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid;
-    box-sizing: border-box;
+.review-form-item span {
+    margin-left: 200px; /* タイトルの幅と同じスペースを確保 */
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
 }
 
-.spice-level {
-    display: flex;
-    align-items: center;
+.review-form-input, .spice-level {
+    flex-grow: 1; /* 残りのスペースを占有 */
 }
 
 .spice-level i {
-    font-size: 40px;
+    font-size: 30px;
     cursor: pointer;
     color: #cccccc; /* デフォルトの色 */
+    margin-right: 5px;
 }
 
 .spice-level i.selected {
-    color: #ffcc00 !important; /* 選択されたアイコンの色 */
+    color: red !important; /* 選択されたアイコンの色 */
 }
 
 .review-form .btn {
