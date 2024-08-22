@@ -5,7 +5,7 @@
 
     <!-- タイトル -->
     <div class="text-center">
-        <h1>食品レビューを書く</h1>
+        <h1>食品レビューを編集する</h1>
     </div>
 
     <!-- 食品情報 -->
@@ -20,34 +20,34 @@
                 <h2 class="fw-bold text-primary mt-3" style="display: inline-block;"><%= @food.name %></h2>
                 <!-- 辛さレベル -->
                 <h6 class="fw-bold mt-2">
-                <%=  I18n.t("activerecord.attributes.review.spice_level") %>
-                <% @food.spice_level.times do %>
-                    <i class="bi bi-fire text-danger"></i>
-                <% end %>
-                <% (5 - @food.spice_level).times do %>
-                    <i class="bi bi-fire text-secondary"></i>
-                <% end %>
+                    <%=  I18n.t("activerecord.attributes.review.spice_level") %>
+                    <% @food.spice_level.times do %>
+                        <i class="bi bi-fire text-danger"></i>
+                    <% end %>
+                    <% (5 - @food.spice_level).times do %>
+                        <i class="bi bi-fire text-secondary"></i>
+                    <% end %>
                 </h6>
                 <!-- 希望小売価格 -->
                 <h6 class="fw-bold">
-                <%=  I18n.t("activerecord.attributes.food.price") %>
-                <% if @food.price != 0 %>
-                    <%= number_to_currency(@food.price, unit: I18n.t("index.en"), format: "%n %u", precision: 0) %><%= I18n.t("index.in_price") %>
-                <% else %>
-                    <%= I18n.t("index.open_price") %>
-                <% end %>
+                    <%=  I18n.t("activerecord.attributes.food.price") %>
+                    <% if @food.price != 0 %>
+                        <%= number_to_currency(@food.price, unit: I18n.t("index.en"), format: "%n %u", precision: 0) %><%= I18n.t("index.in_price") %>
+                    <% else %>
+                        <%= I18n.t("index.open_price") %>
+                    <% end %>
                 </h6>
             </div>
             <hr class="border border-primary border-1 mt-3">
         </div>
 
-        <!-- レビュー投稿 -->
+        <!-- レビュー編集 -->
         <div class="m-5">
-            <%= form_with model: [@food, @review] do |f| %>
+            <%= form_with model: [@food, @review], url: food_review_path(@food, @review), method: :patch do |f| %>
                 <%= f.hidden_field :food_id, value: @food.id %>
                 <div class="review-form-item text-primary">
                     <h6>辛さレベル</h6>
-                    <%= f.hidden_field :spice_level, id: 'spice_level' %>
+                    <%= f.hidden_field :spice_level, id: 'spice_level', value: @review.spice_level %>
                     <div class="spice-level">
                         <i class="bi bi-fire text-secondary" data-value="1"></i>
                         <i class="bi bi-fire text-secondary" data-value="2"></i>
@@ -58,20 +58,20 @@
                 </div>
                 <div class="review-form-item text-primary">
                     <h6>タイトル</h6>
-                    <%= f.text_field :title, class: "review-form-input", title_maxlength: 20, id: "title_text_field" %>
+                    <%= f.text_field :title, class: "review-form-input", title_maxlength: 20, id: "title_text_field", value: @review.title %>
                 </div>
                 <div class="review-form-item mt-0">
-                    <span id="title_char_count">※あと20文字記入できます。</span>
+                    <span id="title_char_count">※あと<%= 20 - @review.title.length %>文字記入できます。</span>
                 </div>
                 <div class="review-form-item text-primary">
                     <h6>感想・コメント</h6>
-                    <%= f.text_area :rating, class: "review-form-input", rows: 5, cols: 40, text_maxlength: 200, id: "rating_text_area" %>
+                    <%= f.text_area :rating, class: "review-form-input", rows: 5, cols: 40, text_maxlength: 200, id: "rating_text_area", value: @review.rating %>
                 </div>
                 <div class="review-form-item mt-0">
-                    <span id="text_char_count">※あと200文字記入できます。</span>
+                    <span id="text_char_count">※あと<%= 200 - @review.rating.length %>文字記入できます。</span>
                 </div>
                 <div class="text-center mt-4">
-                    <%= f.submit "投稿する", class: "btn btn-primary mt-3" %>
+                    <%= f.submit "更新する", class: "btn btn-primary mt-3" %>
                 </div>
             <% end %>
         </div>

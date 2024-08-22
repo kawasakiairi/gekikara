@@ -1,10 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
     const titleField = document.getElementById('title_text_field');
     const titleCharCount = document.getElementById('title_char_count');
-    const maxTitleLength = titleField.getAttribute('title_maxlength');
+    
+    if (!titleField || !titleCharCount) {
+        console.warn('Required elements not found for title character count');
+        return;
+    }
 
-    titleField.addEventListener('input', function() {
+    const maxTitleLength = parseInt(titleField.getAttribute('title_maxlength') || '20', 10);
+
+    function updateCharCount() {
         const currentTitleLength = titleField.value.length;
-        titleCharCount.textContent = `※あと${maxTitleLength - currentTitleLength}文字記入できます。`;
-    });
+        const remainingChars = Math.max(0, maxTitleLength - currentTitleLength);
+        titleCharCount.textContent = `※あと${remainingChars}文字記入できます。`;
+    }
+
+    // 初期表示時のカウント更新
+    updateCharCount();
+
+    titleField.addEventListener('input', updateCharCount);
 });
