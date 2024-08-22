@@ -5,3 +5,6 @@ import "controllers"
 // Javascriptをインポート（8/9追加）
 import "popper"
 import "bootstrap"
+
+import _ from "lodash";
+import './spice_level';

@@ -10,3 +10,6 @@ pin_all_from 'app/javascript/controllers', under: 'controllers'
 pin "popper", to: 'popper.js', preload: true
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
+
+# Javascriptモジュール（8/22追加）
+pin "lodash", to: "https://ga.jspm.io/npm:lodash@4.17.21/lodash.js"
