@@ -148,7 +148,6 @@ h1 {
     font-size: 1.5rem;
 }
 
-
 .show-review-form {
     position: absolute;
     top: 1050px;
@@ -250,6 +249,73 @@ h1 {
 .tab-content {
     background-color: #fff;
 }
+
+/* 食品レビュー投稿画面（review#new）のCSS（8/22追加） */
+.review-form {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 960px;
+    background-color: #fff;
+  }
+
+.review-image {
+    width: 200px;
+    height: auto;
+    object-fit: cover /* 画像を切りとらない */
+}
+
+.review-form-item {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.review-form-item p {
+    width: 200px; /* タイトルの固定幅を設定 */
+    margin: 0;
+    font-weight: bold;
+}
+
+.review-form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid;
+    box-sizing: border-box;
+}
+
+.spice-level {
+    display: flex;
+    align-items: center;
+}
+
+.spice-level i {
+    font-size: 30px;
+    cursor: pointer;
+    color: #cccccc; /* デフォルトの色 */
+    margin-right: 5px;
+}
+
+.selected {
+    color: #ffcc00; /* 選択されたアイコンの色 */
+}
+
+.review-form .btn {
+    border: 4px solid white;
+    border-radius: 10px;
+    width: 200px;
+    font-weight: bold; /* 文字を太くする */
+    font-size: 1.5rem;
+}
+
+
+
+
+
+
+
+
 
 
 

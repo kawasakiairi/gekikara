@@ -83,7 +83,7 @@
             <div class="col-12 mb-4">
               <!-- ユーザー名 -->
               <h5 class="fw-bold mt-2 mx-2 text-primary">
-                <%= review.user.name %>
+                <%= link_to review.user.name, user_path(review.user) %>
               </h5>
               <div class="show-review-flex">
                 <!-- 辛さレベル -->
