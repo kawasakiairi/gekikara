@@ -291,14 +291,13 @@ h1 {
 }
 
 .spice-level i {
-    font-size: 30px;
+    font-size: 40px;
     cursor: pointer;
     color: #cccccc; /* デフォルトの色 */
-    margin-right: 5px;
 }
 
-.selected {
-    color: #ffcc00; /* 選択されたアイコンの色 */
+.spice-level i.selected {
+    color: #ffcc00 !important; /* 選択されたアイコンの色 */
 }
 
 .review-form .btn {
