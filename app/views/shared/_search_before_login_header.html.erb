@@ -1,23 +1,23 @@
 <header>
-    <nav class="navbar navbar-expand-lg navigation">
+    <nav class="navbar navbar-expand-lg">
 
-        <div class="container-fluid">
+        <div class="container">
             <!-- ハンバーガーメニュー -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- ナビゲーション -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto fw-bold me-5">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="container navbar-nav d-flex justify-content-end fw-bold">
                     <li class="nav-item">
-                        <%= link_to 'HOME', root_path, class: "nav-link text-secondary" %>
+                        <%= link_to 'HOME', root_path, class: "nav-link" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to 'ゲキカラ、ドウ？について', about_path, class: "nav-link text-secondary" %>
+                        <%= link_to 'ゲキカラ、ドウ？について', about_path, class: "nav-link" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to '会員登録・ログイン', login_path, class: "nav-link text-secondary" %>
+                        <%= link_to '会員登録・ログイン', login_path, class: "nav-link" %>
                     </li>
                 </ul>
             </div>
