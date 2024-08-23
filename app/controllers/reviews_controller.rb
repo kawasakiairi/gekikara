@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @body_class = "background"
 
     @food = Food.find(params[:food_id])
-    @review = Review.new
+    @review = @food.reviews.new
   end
 
   def create

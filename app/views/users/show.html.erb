@@ -5,7 +5,7 @@
 
     <!-- タイトル -->
     <div class="text-center mb-5">
-        <h1><%= @user.name %>のページ</h1>
+        <h1><%= I18n.t("user.show.title", name: @user.name) %></h1>
     </div>
 
     <!-- ユーザー詳細 -->
@@ -29,7 +29,7 @@
     <div class="favorite-food-form mb-5">
         <!-- お気に入りタブ（8/20追記） -->
         <div id="favorite-food-title" class="show-review-title mb-5">
-            <h2 class="text-center text-primary fw-bold">お気に入り登録した食品一覧</h2>
+            <h2 class="text-center text-primary fw-bold"><%= I18n.t("user.show.favorite") %></h2>
         </div>
 
         <div class="row mb-5">
@@ -75,7 +75,7 @@
         </div>
 
         <% if @favorite_foods.empty? %>
-            <p class="text-center">お気に入りの食品はまだありません。</p>
+            <p class="text-center"><%= I18n.t("user.show.unfavorite") %></p>
         <% end %>
     </div>
 </div>

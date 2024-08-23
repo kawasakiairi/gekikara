@@ -5,7 +5,7 @@
 
     <!-- タイトル -->
     <div class="text-center">
-        <h1>食品レビューを書く</h1>
+        <h1><%= I18n.t("review.new.title") %></h1>
     </div>
 
     <!-- 食品情報 -->
@@ -32,9 +32,9 @@
                 <h6 class="fw-bold">
                 <%=  I18n.t("activerecord.attributes.food.price") %>
                 <% if @food.price != 0 %>
-                    <%= number_to_currency(@food.price, unit: I18n.t("index.en"), format: "%n %u", precision: 0) %><%= I18n.t("index.in_price") %>
+                    <%= number_to_currency(@food.price, unit: I18n.t("food.index.en"), format: "%n %u", precision: 0) %><%= I18n.t("food.index.in_price") %>
                 <% else %>
-                    <%= I18n.t("index.open_price") %>
+                    <%= I18n.t("food.index.open_price") %>
                 <% end %>
                 </h6>
             </div>
@@ -46,7 +46,7 @@
             <%= form_with model: [@food, @review] do |f| %>
                 <%= f.hidden_field :food_id, value: @food.id %>
                 <div class="review-form-item text-primary">
-                    <h6>辛さレベル</h6>
+                    <h6><%= I18n.t("review.new.spice_level") %></h6>
                     <%= f.hidden_field :spice_level, id: 'spice_level' %>
                     <div class="spice-level">
                         <i class="bi bi-fire text-secondary" data-value="1"></i>
@@ -57,21 +57,25 @@
                     </div>
                 </div>
                 <div class="review-form-item text-primary">
-                    <h6>タイトル</h6>
+                    <h6><%= I18n.t("review.new.review_title") %></h6>
                     <%= f.text_field :title, class: "review-form-input", title_maxlength: 20, id: "title_text_field" %>
                 </div>
                 <div class="review-form-item mt-0">
-                    <span id="title_char_count">※あと20文字記入できます。</span>
+                    <span id="title_char_count">
+                        <%= I18n.t("review.new.remaining_characters", count: 20 - (@review.title&.length || 0)) %>
+                    </span>
                 </div>
                 <div class="review-form-item text-primary">
-                    <h6>感想・コメント</h6>
+                    <h6><%= I18n.t("review.new.rating") %></h6>
                     <%= f.text_area :rating, class: "review-form-input", rows: 5, cols: 40, text_maxlength: 200, id: "rating_text_area" %>
                 </div>
                 <div class="review-form-item mt-0">
-                    <span id="text_char_count">※あと200文字記入できます。</span>
+                    <span id="title_char_count">
+                        <%= I18n.t("review.new.remaining_characters", count: 200 - (@review.title&.length || 0)) %>
+                    </span>
                 </div>
                 <div class="text-center mt-4">
-                    <%= f.submit "投稿する", class: "btn btn-primary mt-3" %>
+                    <%= f.submit I18n.t("buttons.post"), class: "btn btn-primary mt-3" %>
                 </div>
             <% end %>
         </div>

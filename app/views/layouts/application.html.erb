@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ゲキカラ、ドウ？</title>
+    <title><%= I18n.t("application.title") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="<%= @body_class %>">
+  <body class="<%= @body_class %> d-flex flex-column vh-100">
     <!-- ログイン/未ログイン状態による切り替え（8/12追加） -->
     <!-- sorceryを使用している場合に提供されるメソッド -->
     <% if logged_in? %>
@@ -29,7 +29,9 @@
     <% end %>
     <!-- パンくずリスト（8/15追加） -->
     <%= breadcrumbs separator: " &rsaquo; " %>
-    <%= yield %>
-    <!-- <%= render 'shared/footer' %> -->
+    <main>
+      <%= yield %>
+    </main>
+    <%= render 'shared/footer' %>
   </body>
 </html>
