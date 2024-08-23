@@ -25,6 +25,8 @@
     @body_class = "background"
 
     @user = User.find(params[:id])
+    @favorite_foods = @user.favorites.includes(:food_category).order(created_at: :desc)
+    @food = Food.find(params[:id])
   end
 
   private

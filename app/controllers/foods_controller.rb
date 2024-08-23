@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
   skip_before_action :require_login, only: %i[index search show]
+  before_action :set_food, only: [:favorite, :unfavorite]
 
   # トップページ（8/11追加）
   def search
@@ -54,6 +55,17 @@ class FoodsController < ApplicationController
     @reviews = @reviews.order(sort_order).page(params[:page]).per(3)
   end
 
+  # お気に入り食品機能（8/23追加）
+  def favorite
+    current_user.favorite(@food)
+    redirect_to @food, notice: 'お気に入りに追加しました'
+  end
+
+  def unfavorite
+    current_user.unfavorite(@food)
+    redirect_to @food, notice: 'お気に入りから削除しました'
+  end
+
   private
 
   def food_search_params
@@ -62,5 +74,10 @@ class FoodsController < ApplicationController
                                      :price_from,
                                      :price_to,
                                      :keyword)
+  end
+
+  # お気に入り食品機能（8/23追加）
+  def set_food
+    @food = Food.find(params[:id])
   end
 end

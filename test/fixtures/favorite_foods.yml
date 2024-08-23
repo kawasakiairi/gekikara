@@ -2,8 +2,8 @@
 
 one:
   user: one
-  foods: one
+  food: one
 
 two:
   user: two
-  foods: two
+  food: two

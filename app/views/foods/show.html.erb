@@ -15,10 +15,16 @@
       <div class="col-md-6 mb-3">
         <div class="d-flex flex-column align-items-center">
           <%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png", class: "img-fluid show-food-image") %>
-          <!-- いいねタグ -->
-          <button class="btn btn-warning">
-            <i class="bi bi-bookmark-heart-fill"></i> お気に入り
-          </button>
+          <!-- お気に入り食品機能（8/23追加） -->
+          <% if current_user.favorite?(@food) %>
+            <%= button_to unfavorite_food_path(@food), method: :delete, remote: true, class: "btn btn-warning" do %>
+              <i class="bi bi-bookmark-heart-fill"></i> お気に入りから削除
+            <% end %>
+          <% else %>
+            <%= button_to favorite_food_path(@food), method: :post, remote: true, class: "btn btn-outline-warning" do %>
+              <i class="bi bi-bookmark-heart"></i> お気に入りに追加
+            <% end %>
+          <% end %>                
         </div>
       </div>
       <div class="col-md-6">
