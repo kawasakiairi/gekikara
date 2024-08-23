@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
     <title><%= I18n.t("application.title") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="<%= @body_class %> d-flex flex-column vh-100">
+  <body class="<%= @body_class %> d-flex flex-column h-100">
     <!-- ログイン/未ログイン状態による切り替え（8/12追加） -->
     <!-- sorceryを使用している場合に提供されるメソッド -->
     <% if logged_in? %>
@@ -28,16 +28,15 @@
       <% end %>
     <% end %>
     
-
-    <main class="flex-grow-1">
+    <main class="flex-shrink-0">
       <!-- パンくずリスト（8/15追加） -->
       <div class="container mt-3">
         <%= breadcrumbs separator: " &rsaquo; " %>
       </div>
-      
+
       <%= yield %>
     </main>
-    
+
     <%= render 'shared/footer' %>
   </body>
 </html>
