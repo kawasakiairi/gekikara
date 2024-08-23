@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorite_foods/create'
+  get 'favorite_foods/destroy'
   # トップページ（8/11追加）
   root "foods#search"
 
@@ -6,6 +8,11 @@ Rails.application.routes.draw do
   resources :foods, only: %i[index show] do
     collection do
       get :search
+    end
+    # お気に入り食品機能（8/23追加）
+    member do
+      post 'favorite'
+      delete 'unfavorite'
     end
     # レビューページ（8/21追加）
     resources :reviews, only: %i[new create edit update destroy]

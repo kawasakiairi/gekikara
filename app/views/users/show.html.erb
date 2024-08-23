@@ -5,7 +5,7 @@
 
     <!-- タイトル -->
     <div class="text-center mb-5">
-    <h1><%= @user.name %>のページ</h1>
+        <h1><%= @user.name %>のページ</h1>
     </div>
 
     <!-- ユーザー詳細 -->
@@ -24,48 +24,58 @@
                 </p>
             </div>
         </div>
+    </div>
 
+    <div class="favorite-food-form mb-5">
         <!-- お気に入りタブ（8/20追記） -->
-        <div class="user-show-tab">
-            <ul class="nav" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link fw-bold active" id="food-tab" data-bs-toggle="tab" data-bs-target="#food" type="button" role="tab" aria-controls="food" aria-selected="true">
-                        お気に入り食品
-                    </a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link fw-bold" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">
-                        お気に入りレビュー
-                    </a>
-                </li>
-            </ul>
-            <!-- コンテンツ詳細（8/20追加） -->
-            <div class="tab-content px-5" id="myTabContent">
-                <div class="tab-pane py-5 fade show active" id="food" role="tabpanel" aria-labelledby="food-tab">
-                    <% 5.times do |i| %>
-                        <div class="card mb-3" style="width: 50rem;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body">
-                                <h4 class="card-title">Primary card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div> 
+        <div id="favorite-food-title" class="show-review-title mb-5">
+            <h2 class="text-center text-primary fw-bold">お気に入り登録した食品一覧</h2>
+        </div>
+
+        <div class="row mb-5">
+            <% @favorite_foods.each do |favorite| %>
+                <div class="col-6 pt-4 d-flex">
+                    <%= link_to food_path(favorite), class: "card index-card border-primary d-flex flex-row text-decoration-none" do %>
+                        <!-- 食品写真 -->
+                        <div class="d-flex align-items-center">
+                            <%= image_tag(favorite.food_image.present? ? favorite.food_image.url : "image_ramen.png", class: "img-fluid index-food-image") %>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <!-- 食品名 -->
+                            <h5 class="card-title fw-bold mt-2 text-primary mx-2">
+                                <%= favorite.name %>
+                            </h5>
+                            <!-- 食品タグ -->
+                            <h6 class="fw-bold">
+                                <span class="badge rounded-pill bg-danger mx-2"><%= favorite.food_category.name %></span>
+                            </h6>
+                            <!-- 辛さレベル -->
+                            <span class="card-text fw-bold mx-2">
+                                <%=  I18n.t("activerecord.attributes.food.spice_level") %>
+                                <% favorite.spice_level.times do %>
+                                <i class="bi bi-fire text-danger"></i>
+                                <% end %>
+                                <% (5 - favorite.spice_level).times do %>
+                                <i class="bi bi-fire text-secondary"></i>
+                                <% end %>
+                            </span>
+                            <!-- 希望小売価格 -->
+                            <span class="card-text fw-bold mx-2">
+                                <%=  I18n.t("activerecord.attributes.food.price") %>
+                                <% if favorite.price != 0 %>
+                                <%= number_to_currency(favorite.price, unit: I18n.t("index.en"), format: "%n %u", precision: 0) %><%= I18n.t("index.in_price") %>
+                                <% else %>
+                                <%= I18n.t("index.open_price") %>
+                                <% end %>
+                            </span>
+                        </div>
                     <% end %>
                 </div>
-                <div class="tab-pane py-5 fw-bold text-center fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                    <p>お気に入りレビュー</p>
-                </div>
-            </div>
+            <% end %>
         </div>
+
+        <% if @favorite_foods.empty? %>
+            <p class="text-center">お気に入りの食品はまだありません。</p>
+        <% end %>
+    </div>
+</div>
