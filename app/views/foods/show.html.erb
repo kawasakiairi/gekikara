@@ -16,7 +16,7 @@
         <div class="d-flex flex-column align-items-center">
           <%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png", class: "img-fluid show-food-image") %>
           <!-- いいねタグ -->
-          <button class="btn btn-primary">
+          <button class="btn btn-warning">
             <i class="bi bi-bookmark-heart-fill"></i> お気に入り
           </button>
         </div>
@@ -104,17 +104,17 @@
                 <% if current_user == review.user %>
                   <div class="btn-group me-2" role="group">
                     <!-- 編集タグ -->
-                    <%= link_to edit_food_review_path(@food, review), class:"btn btn-outline-danger" do %>
+                    <%= link_to edit_food_review_path(@food, review), class:"btn btn-outline-warning" do %>
                       <i class="bi bi-pencil-fill"></i>
                     <% end %>
                     <!-- 削除タグ -->
-                    <%= link_to food_review_path(@food, review), class:"btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
+                    <%= link_to food_review_path(@food, review), class:"btn btn-outline-warning", data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
                       <i class="bi bi-trash"></i></i>
                     <% end %>
                   </div>                 
                 <% else %>
                   <!-- いいねタグ -->
-                  <%= link_to "#", class:"btn btn-outline-danger" do %>
+                  <%= link_to "#", class:"btn btn-outline-warning" do %>
                     <i class="bi bi-heart-fill"></i>
                   <% end %>
                 <% end %>

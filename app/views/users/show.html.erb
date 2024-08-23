@@ -4,25 +4,30 @@
 <div class="container my-5">
 
     <!-- タイトル -->
-    <div class="text-center">
+    <div class="text-center mb-5">
     <h1><%= @user.name %>のページ</h1>
     </div>
 
     <!-- ユーザー詳細 -->
-    <div class="user-show-form">
-        <%= image_tag(@user.profile_image.url, class: "my-5 ms-5 rounded-circle user-image") %>
-        <div class="user-show-text">
-            <h2 class="ms-5 fw-bold">
-                <%= @user.name %>
-            </h2>
-            <h2 class="ms-5 my-3 fw-bold">
-                <%= @user.comment %>
-            </h2>
+    <div class="user-show-form mb-5">
+        <div class="row align-items-center">
+            <!-- ユーザー画像 -->
+            <div class="col-md-4 text-center">
+                <%= image_tag(@user.profile_image.url, class: "img-fluid rounded-circle user-image mb-3") %>
+            </div>
+            <div class="col-md-8">
+                <h2 class="fw-bold">
+                    <%= @user.name %>
+                </h2>
+                <p class="user-comment">
+                    <%= @user.comment %>
+                </p>
+            </div>
         </div>
 
         <!-- お気に入りタブ（8/20追記） -->
         <div class="user-show-tab">
-            <ul class="nav pt-3" id="myTab" role="tablist">
+            <ul class="nav" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link fw-bold active" id="food-tab" data-bs-toggle="tab" data-bs-target="#food" type="button" role="tab" aria-controls="food" aria-selected="true">
                         お気に入り食品
