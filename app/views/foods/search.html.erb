@@ -5,8 +5,8 @@
 
   <!-- タイトル -->
   <div class="search-title">
-    <h1><%= I18n.t("search.title") %></h1>
-    <p><%= I18n.t("search.subtitle") %></p>
+    <h1><%= I18n.t("food.search.title") %></h1>
+    <p><%= I18n.t("food.search.subtitle") %></p>
   </div>
 
   <!-- 検索フォーム -->
@@ -14,18 +14,18 @@
     <div class="search-form border-primary">
       <div class="row">
         <div class="col-4 d-flex align-items-center">
-          <h1 class="px-3"><%= I18n.t("search.find_spicy") %></h1>
+          <h1 class="px-3"><%= I18n.t("food.search.find_spicy") %></h1>
         </div>
         <div class="col-8">
           <div class="row mt-3">
             <div class="col-6">
               <!-- 国から探す（セレクトボックス） -->
-              <%= f.label :food_country_id, "#{I18n.t("activerecord.attributes.food.food_country_id")}#{I18n.t("search.from")}", class: "form-label fw-bold text-primary" %>
+              <%= f.label :food_country_id, "#{I18n.t("activerecord.attributes.food.food_country_id")}#{I18n.t("food.search.from")}", class: "form-label fw-bold text-primary" %>
               <%= f.collection_select(:food_country_id, FoodCountry.all, :id, :name, { selected: @search_params[:food_country_id], include_blank: true }, { class: "form-select search-border border-primary" }) %>
             </div>
             <div class="col-6">
               <!-- 値段から探す（範囲指定） -->
-              <%= f.label :price, "#{I18n.t("activerecord.attributes.food.price")}#{I18n.t("search.from")}", class: "form-label fw-bold text-primary" %>
+              <%= f.label :price, "#{I18n.t("activerecord.attributes.food.price")}#{I18n.t("food.search.from")}", class: "form-label fw-bold text-primary" %>
               <div class="d-flex align-items-center">
                 <%= f.select :price_from, options_for_select([0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].map { |price| ["#{price}円", price] }, @search_params[:price_from]), { include_blank: true }, class:"form-control search-border border-primary" %>
                 <span class="mx-2"> ~ </span>
@@ -36,12 +36,12 @@
           <div class="row mt-3">
             <div class="col-6">
               <!-- カテゴリから探す（セレクトボックス） -->
-              <%= f.label :food_category_id, "#{I18n.t("activerecord.attributes.food.food_category_id")}#{I18n.t("search.from")}", class: "form-label fw-bold text-primary" %>
+              <%= f.label :food_category_id, "#{I18n.t("activerecord.attributes.food.food_category_id")}#{I18n.t("food.search.from")}", class: "form-label fw-bold text-primary" %>
               <%= f.collection_select(:food_category_id, FoodCategory.all, :id, :name, { selected: @search_params[:food_category_id], include_blank: true }, { class: "form-select search-border border-primary" }) %>
             </div>
             <div class="col-6">
               <!-- キーワードから探す（テキストフィールド） -->
-              <%= f.label :keyword, "#{I18n.t("search.keyword")}#{I18n.t("search.from")}", class: "form-label fw-bold text-primary" %>
+              <%= f.label :keyword, "#{I18n.t("food.search.keyword")}#{I18n.t("food.search.from")}", class: "form-label fw-bold text-primary" %>
               <%= f.text_field :keyword, value: @search_params[:keyword], class:"form-control search-border border-primary" %>
             </div>
           </div>
@@ -61,7 +61,7 @@
       <div class="col-6 search-country">
         <div>
           <i class="bi bi-funnel-fill me-2"></i>
-          <span><%= "#{I18n.t('activerecord.attributes.food.food_country_id')}#{I18n.t('search.from')}" %></span>
+          <span><%= "#{I18n.t('activerecord.attributes.food.food_country_id')}#{I18n.t('food.search.from')}" %></span>
         </div>
         <div class="row mt-3 justify-content-center">
           <% FoodCountry.all.each do |country| %>
@@ -76,7 +76,7 @@
       <div class="col-6 search-category">
         <div>
           <i class="bi bi-funnel-fill me-2"></i>
-          <span><%= "#{I18n.t('activerecord.attributes.food.food_category_id')}#{I18n.t('search.from')}" %></span>
+          <span><%= "#{I18n.t('activerecord.attributes.food.food_category_id')}#{I18n.t('food.search.from')}" %></span>
         </div>
         <div class="row mt-3 justify-content-center">
           <% FoodCategory.all.each do |category| %>
@@ -88,5 +88,4 @@
       </div>
     </div>
   </div>
-
 </div>

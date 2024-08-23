@@ -1,24 +1,24 @@
 <div class="form-wrapper">
-    <h1>新規登録</h1>
+    <h1><%= I18n.t("user.new.title") %></h1>
 
     <!-- ユーザー登録 -->
     <%= form_with model: @user do |f| %>
         <div class="form-item">
-            <%= f.text_field :name, placeholder:"User Name" %>
+            <%= f.text_field :name, placeholder: I18n.t("placeholder.name") %>
         </div>
         <div class="form-item">
-            <%= f.text_field :email, placeholder:"Email Address" %>
+            <%= f.text_field :email, placeholder: I18n.t("placeholder.email") %>
         </div>
         <div class="form-item">
-            <%= f.password_field :password, placeholder:"Password" %>
+            <%= f.password_field :password, placeholder: I18n.t("placeholder.password") %>
         </div>
         <div class="form-item">
-            <%= f.password_field :password_confirmation, placeholder:"Password（確認用）" %>    
+            <%= f.password_field :password_confirmation, placeholder: I18n.t("placeholder.password_confirmation") %>    
         </div>
         <!-- 登録する -->
-        <%= f.submit "登録する", class:"btn btn-lg btn-primary w-100" %>
+        <%= f.submit I18n.t("buttons.submit"), class:"btn btn-lg btn-primary w-100" %>
     <% end %>
     <div class="form-footer">
-        <p><%= link_to 'ログインする', login_path %></p>
+        <p><%= link_to I18n.t("links.login"), login_path %></p>
     </div>
 </div>

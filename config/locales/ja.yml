@@ -33,30 +33,95 @@ ja:
         spice_level: 辛さレベル
         food_id: 食品
         user_id: ユーザー
-  
-  search:
+    
+  application:
     title: "ゲキカラ、ドウ？"
-    subtitle: "辛さを極めるあなたに贈る、究極の激辛食品検索アプリ"
-    find_spicy: "理想の辛さを探し出そう！"
-    keyword: "キーワード"
-    from: "から探す"
   
-  index:
-    title: "検索結果"
-    subtitle: "あなたにぴったりの激辛食品が%{count}件見つかりました。"
-    en: "円"
-    in_price: "（税別）"
-    open_price: "オープン価格"
-    no_food: "検索結果が見つかりませんでした。条件を変えて再度検索してください。"
+  header:
+    home: "HOME"
+    about: "ゲキカラ、ドウ？について"
+    before_login: "会員登録・ログイン"
+    mypage: "%{name}のページ"
+    logout: "ログアウト"
+  
+  footer:
+    copyright: Copyright @ 2024 ゲキカラ、ドウ？
 
-  show:
-    title: "%{food_name}の詳細"
-    review: "%{food_name}のレビュー"
-    no_review: "まだレビューがありません。最初のレビューを書いてみませんか？"
+  about:
+    title: "ゲキカラ、ドウ？とは"
+    body_1: "ゲキカラ、ドウは、激辛料理愛好家のための究極のアプリです。"
+    body_2: "日本全国の激辛メニューを簡単に探せ、あなたの辛さ耐性に合わせた料理を見つけることができます。"
+    function: "主な機能："
+    function1: "1. 激辛メニュー検索"
+    function1_body1: "国、食品カテゴリ、価格帯、キーワードから食品を検索できます。"
+    function1_body2: "また、位置情報を利用して近くの激辛料理店も見つけられます。"
+    function2: "2. お気に入り食品登録"
+    function2_body1: "気に入った激辛食品を登録し、いつでも簡単にアクセスできます。"
+    message: "ゲキカラ、ドウで、あなたの激辛体験をさらに豊かにしましょう！"
+
+  food:
+    search:
+      title: "ゲキカラ、ドウ？"
+      subtitle: "辛さを極めるあなたに贈る、究極の激辛食品検索アプリ"
+      find_spicy: "理想の辛さを探し出そう！"
+      keyword: "キーワード"
+      from: "から探す" 
+    index:
+      title: "検索結果"
+      subtitle: "あなたにぴったりの激辛食品が%{count}件見つかりました。"
+      en: "円"
+      in_price: "（税別）"
+      open_price: "オープン価格"
+      no_food: "検索結果が見つかりませんでした。条件を変えて再度検索してください。"
+    show:
+      title: "%{food_name}の詳細"
+      favorite: "お気に入りに追加"
+      unfavorite: "お気に入りから削除"
+      review: "%{food_name}のレビュー"
+      no_review: "まだレビューがありません。最初のレビューを書いてみませんか？"
   
+  review:
+    new:
+      title: "食品レビューを書く"
+      spice_level: "辛さレベル"
+      review_title: "タイトル"
+      rating: "感想・コメント"
+      remaining_characters: "※あと%{count}文字記入できます。"
+    edit:
+      title: "食品レビューを編集する"
+
+  user_session:
+    new:
+      title: "ログイン"
+  
+  user:
+    new:
+      title: "新規登録"
+    show:
+      title: "%{name}のページ"
+      favorite: "お気に入り登録した食品一覧"
+      unfavorite: "お気に入りの食品はまだありません。"
+
   buttons:
     search: "検索する"
+    post: "投稿する"
+    confirm: "本当に削除しますか？"
+    update: "更新する"
+    login: "ログインする"
+    submit: "登録する"
   
+  links:
+    submit: "会員登録する"
+    login: "ログインする"
+  
+  placeholder:
+    keyword: "キーワード"
+    name: "User Name"
+    email: "Email Address"
+    password: "Password"
+    password_confirmation: "Password（確認用）"
+
+
   views:
     pagination:
       first: "最初"
