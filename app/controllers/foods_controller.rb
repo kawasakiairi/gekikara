@@ -15,7 +15,12 @@ class FoodsController < ApplicationController
   def index
     @body_class = "background"
 
-    @search_params = food_search_params
+    # 検索条件をセッションに保存（8/25追加）
+    if params[:search]
+      session[:food_search] = food_search_params.to_h
+    end
+
+    @search_params = session[:food_search] || {}
     @foods = Food.search(@search_params).includes(:food_category, :food_country)
 
     # ページネーション（8/11追加）
@@ -71,10 +76,10 @@ class FoodsController < ApplicationController
 
   def food_search_params
     params.fetch(:search, {}).permit(:food_country_id,
-                                     :food_category_id,
-                                     :price_from,
-                                     :price_to,
-                                     :keyword)
+                                 :food_category_id,
+                                 :price_from,
+                                 :price_to,
+                                 :keyword)
   end
 
   # お気に入り食品機能（8/23追加）
