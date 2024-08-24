@@ -11,16 +11,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="container navbar-nav d-flex justify-content-end fw-bold">
                     <li class="nav-item">
-                        <%= link_to I18n.t("header.home"), root_path, class: "nav-link" %>
+                        <%= link_to I18n.t("header.home"), root_path, class: "nav-link text-white" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to I18n.t("header.about"), about_path, class: "nav-link" %>
+                        <%= link_to I18n.t("header.about"), about_path, class: "nav-link text-white" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to I18n.t("header.mypage", name: current_user.name), user_path(current_user), class: "nav-link" %>
+                        <%= link_to I18n.t("header.mypage", name: current_user.name), user_path(current_user), class: "nav-link text-white" %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to I18n.t("header.logout"), logout_path, class: "nav-link", data: { turbo_method: :delete } %>
+                        <%= link_to I18n.t("header.logout"), logout_path, class: "nav-link text-white", data: { turbo_method: :delete } %>
                     </li>                    
                 </ul>
             </div>

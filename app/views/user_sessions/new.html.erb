@@ -1,17 +1,22 @@
+<div class="user-new-container my-5">
 
-
-<div class="form-wrapper">
+  <!-- タイトル -->
   <h1><%= I18n.t("user_session.new.title") %></h1>
+ 
+  <!-- ログイン -->
   <%= form_with url: login_path do |f| %>
     <div class="form-item">
-        <%= f.text_field :email, placeholder: I18n.t("placeholder.email") %>
+      <%= f.text_field :email, placeholder: I18n.t("placeholder.email") %>
     </div>
     <div class="form-item">
-        <%= f.password_field :password, placeholder: I18n.t("placeholder.password") %>
+      <%= f.password_field :password, placeholder: I18n.t("placeholder.password") %>
     </div>
+
     <!-- ログインする -->
-    <%= f.submit I18n.t("buttons.login"), class:"btn btn-lg btn-primary w-100" %>
+    <%= f.submit I18n.t("buttons.login"), class:"btn user-new-btn" %>
   <% end %>
+
+  <!-- 会員登録するリンク -->
   <div class="form-footer">
     <p><%= link_to I18n.t("links.submit"), new_user_path %></p>
     <!--<p><a href="#">Forgot password?</a></p>-->

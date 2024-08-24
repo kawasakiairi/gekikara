@@ -30,13 +30,17 @@
     
     <main class="flex-shrink-0">
       <!-- パンくずリスト（8/15追加） -->
-      <div class="container mt-3">
+      <div class="container breadcrumbs-in mt-3">
         <%= breadcrumbs separator: " &rsaquo; " %>
       </div>
 
       <%= yield %>
     </main>
 
-    <%= render 'shared/footer' %>
+    <% if @footer_type == "search_footer" %>
+      <%= render 'shared/search_footer' %>
+    <% else %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>
