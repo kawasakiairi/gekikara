@@ -1,5 +1,6 @@
-<!-- パンくずリスト -->
-<% breadcrumb :food_index %>
+<% content_for(:title, I18n.t("food.index.title")) %>
+
+<% breadcrumb :food_index, @foods %>
 
 <div class="container my-5">
 

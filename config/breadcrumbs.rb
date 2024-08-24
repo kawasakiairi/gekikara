@@ -8,7 +8,7 @@ crumb :about do
 end
 
 crumb :food_index do
-  link '検索結果一覧',foods_path
+  link '検索結果一覧', foods_path(search: session[:food_search], sort: @current_sort)
   parent :root
 end
 
