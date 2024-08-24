@@ -3,81 +3,85 @@
 
 <div class="container my-5">
 
-    <!-- タイトル -->
-    <div class="text-center">
-        <h1><%= I18n.t("review.new.title") %></h1>
+  <!-- タイトル -->
+  <div class="title">
+      <h1><%= I18n.t("review.new.title") %></h1>
+  </div>
+
+  <!-- 食品情報 -->
+  <div class="review-form">
+    <div class="row">
+      <!-- 食品画像 -->
+      <div class="col-md-3 d-flex align-items-center">
+        <%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png", class: "img-fluid review-image") %>
+      </div>
+      <div class="col-md-9 mt-4">
+        <!-- 食品名 -->
+        <h2 class="fw-bold mt-3"><%= @food.name %></h2>
+        <!-- 辛さレベル -->
+        <h6 class="fw-bold mt-3">
+          <%=  I18n.t("activerecord.attributes.review.spice_level") %>
+          <!-- 赤 -->
+          <% @food.spice_level.times do %>
+              <i class="bi bi-fire text-danger"></i>
+          <% end %>
+          <!-- グレー -->
+          <% (5 - @food.spice_level).times do %>
+              <i class="bi bi-fire text-secondary"></i>
+          <% end %>
+        </h6>
+
+        <!-- 希望小売価格 -->
+        <h6 class="fw-bold">
+          <%=  I18n.t("activerecord.attributes.food.price") %>
+          <% if @food.price != 0 %>
+            <%= number_to_currency(@food.price, unit: I18n.t("food.index.en"), format: "%n %u", precision: 0) %><%= I18n.t("food.index.in_price") %>
+          <% else %>
+            <%= I18n.t("food.index.open_price") %>
+          <% end %>
+        </h6>
+      </div>
+      <hr class="border-custom">
     </div>
 
-    <!-- 食品情報 -->
-    <div class="review-form">
-        <div class="row m-5">
-            <!-- 食品画像 -->
-            <div class="col-3">
-                <%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png", class: "img-fluid review-image") %>
-            </div>
-            <div class="col-9">
-                <!-- 食品名 -->
-                <h2 class="fw-bold text-primary mt-3" style="display: inline-block;"><%= @food.name %></h2>
-                <!-- 辛さレベル -->
-                <h6 class="fw-bold mt-2">
-                <%=  I18n.t("activerecord.attributes.review.spice_level") %>
-                <% @food.spice_level.times do %>
-                    <i class="bi bi-fire text-danger"></i>
-                <% end %>
-                <% (5 - @food.spice_level).times do %>
-                    <i class="bi bi-fire text-secondary"></i>
-                <% end %>
-                </h6>
-                <!-- 希望小売価格 -->
-                <h6 class="fw-bold">
-                <%=  I18n.t("activerecord.attributes.food.price") %>
-                <% if @food.price != 0 %>
-                    <%= number_to_currency(@food.price, unit: I18n.t("food.index.en"), format: "%n %u", precision: 0) %><%= I18n.t("food.index.in_price") %>
-                <% else %>
-                    <%= I18n.t("food.index.open_price") %>
-                <% end %>
-                </h6>
-            </div>
-            <hr class="border border-primary border-1 mt-3">
+    <!-- レビュー投稿 -->
+    <%= form_with model: [@food, @review] do |f| %>
+      <%= f.hidden_field :food_id, value: @food.id %>
+      <div class="review-form-item text-primary">
+        <!-- 辛さレベル -->
+        <h6><%= I18n.t("review.new.spice_level") %></h6>
+        <%= f.hidden_field :spice_level, id: 'spice_level' %>
+        <div class="spice-level">
+          <i class="bi bi-fire text-secondary" data-value="1"></i>
+          <i class="bi bi-fire text-secondary" data-value="2"></i>
+          <i class="bi bi-fire text-secondary" data-value="3"></i>
+          <i class="bi bi-fire text-secondary" data-value="4"></i>
+          <i class="bi bi-fire text-secondary" data-value="5"></i>
         </div>
-
-        <!-- レビュー投稿 -->
-        <div class="m-5">
-            <%= form_with model: [@food, @review] do |f| %>
-                <%= f.hidden_field :food_id, value: @food.id %>
-                <div class="review-form-item text-primary">
-                    <h6><%= I18n.t("review.new.spice_level") %></h6>
-                    <%= f.hidden_field :spice_level, id: 'spice_level' %>
-                    <div class="spice-level">
-                        <i class="bi bi-fire text-secondary" data-value="1"></i>
-                        <i class="bi bi-fire text-secondary" data-value="2"></i>
-                        <i class="bi bi-fire text-secondary" data-value="3"></i>
-                        <i class="bi bi-fire text-secondary" data-value="4"></i>
-                        <i class="bi bi-fire text-secondary" data-value="5"></i>
-                    </div>
-                </div>
-                <div class="review-form-item text-primary">
-                    <h6><%= I18n.t("review.new.review_title") %></h6>
-                    <%= f.text_field :title, class: "review-form-input", title_maxlength: 20, id: "title_text_field" %>
-                </div>
-                <div class="review-form-item mt-0">
-                    <span id="title_char_count">
-                        <%= I18n.t("review.new.remaining_characters", count: 20 - (@review.title&.length || 0)) %>
-                    </span>
-                </div>
-                <div class="review-form-item text-primary">
-                    <h6><%= I18n.t("review.new.rating") %></h6>
-                    <%= f.text_area :rating, class: "review-form-input", rows: 5, cols: 40, text_maxlength: 200, id: "rating_text_area" %>
-                </div>
-                <div class="review-form-item mt-0">
-                    <span id="title_char_count">
-                        <%= I18n.t("review.new.remaining_characters", count: 200 - (@review.title&.length || 0)) %>
-                    </span>
-                </div>
-                <div class="text-center mt-4">
-                    <%= f.submit I18n.t("buttons.post"), class: "btn btn-primary mt-3" %>
-                </div>
-            <% end %>
-        </div>
-    </div>
+      </div>
+      <div class="review-form-item text-primary">
+        <!-- タイトル -->
+        <h6><%= I18n.t("review.new.review_title") %></h6>
+        <%= f.text_field :title, class: "review-form-input", title_maxlength: 20, id: "title_text_field" %>
+      </div>
+      <div class="review-form-item mt-0">
+        <span id="title_char_count">
+          <%= I18n.t("review.new.remaining_characters", count: 20 - (@review.title&.length || 0)) %>
+        </span>
+      </div>
+      <div class="review-form-item text-primary">
+        <!-- 感想・コメント -->
+        <h6><%= I18n.t("review.new.rating") %></h6>
+        <%= f.text_area :rating, class: "review-form-input", rows: 5, cols: 40, text_maxlength: 200, id: "rating_text_area" %>
+      </div>
+      <div class="review-form-item mt-0">
+        <span id="title_char_count">
+          <%= I18n.t("review.new.remaining_characters", count: 200 - (@review.title&.length || 0)) %>
+        </span>
+      </div>
+      <div class="text-end mt-4">
+        <%= f.submit I18n.t("buttons.post"), class: "btn review-btn" %>
+      </div>
+    <% end %>
+  </div>
 </div>

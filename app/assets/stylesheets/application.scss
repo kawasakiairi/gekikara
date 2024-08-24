@@ -4,350 +4,468 @@
 @import "bootswatch/bootstrap";
 
 /* 共通画面のCSS（8/15追加） */
+:root {
+  --bs-primary: #fda085;
+  --bs-primary-rgb: 253, 160, 133;
+}
+
 .background {
-    background-color: #fafafa;
+	background-color: #fafafa;
 }
 
 .container {
-    width: 960px;
+	width: 960px;
+	margin-bottom: 50px;
 }
 
-h1 {
-    font-weight: bold;
-    font-size: 2.5em;
-    text-align: center;  
+.border-custom {
+	color: #fda085; 
+	border-width: 1px;
+	border-style: solid;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.title h1 {
+	font-size: 2.5rem; 
+	font-weight: bold;
+	margin: 0;
+}
+
+.title::before, 
+.title::after {
+	content: '';
+	width: 70px;
+	height: 3px;
+	background-color: #f6d365;
+}
+
+.title::before {
+	margin-right: 20px; /* 左側にスペースを追加 */
+}
+
+.title::after {
+	margin-left: 20px; /* 右側にスペースを追加 */
+}
+
+.subtitle p {
+	margin-top: 100px;
+	padding: 0.25em 0.5em;/*上下 左右の余白*/
+	color: #494949;/*文字色*/
+	background: transparent;/*背景透明に*/
+	border-left: solid 5px #f6d365;/*左線*/
+}
+
+.breadcrumbs-in li.bcl-last {
+	color: #fda085;
+}
+
+.breadcrumbs-in a {
+	color: #fda085;
+}
+
+.pagination .active .page-link {
+	background-color: #fda085; /* 背景色をオレンジに設定 */
+	border-color: #fda085; /* ボーダー色をオレンジに設定 */
+	color: #fff; /* テキストの色を白に設定 */
+}
+
+.pagination .page-link {
+	color: #fda085; /* 他のページリンクのテキスト色をオレンジに設定 */
+}
+
+.pagination .page-link:hover {
+	background-color: #e68a5e; /* ホバー時の背景色を少し濃く */
+	border-color: #e68a5e; /* ホバー時のボーダー色を少し濃く */
+	color: #fff; /* ホバー時のテキスト色を白に設定 */
 }
 
 /* 検索画面(food#search)のCSS（8/15追加） */
 .search-background {
-    background-image: url('back-ground.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 30vh; /* ビューポートの高さの30%を最小の高さとして設定 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 }
 
 .search-title {
-    padding: 5% 2%;
-    text-align: center;
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* レスポンシブなフォントサイズ */
-    color: #fff;
-    font-weight: bold;
+	display: flex;
+	flex-direction: column; /* 縦に並べる */
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: #fff;
+	padding: 20px;
+}
+
+.search-title h1 {
+	font-size: 4rem; /* タイトルのフォントサイズを大きく */
+	font-weight: bold; /* 太字にする */
+	margin: 0; /* マージンをリセット */
+}
+
+.search-title p {
+	font-size: 1.25rem; /* サブタイトルのフォントサイズを設定 */
+	margin-top: 10px; /* 上に余白を追加 */
 }
 
 .search-form {
-    padding: 3em 1em;
-    width: 90%;
-    max-width: 960px; /* 最大幅を設定 */
-    margin: -5% auto 5%; /* 上部のマージンをネガティブに設定してオーバーラップさせる */
-    background: #fff;
-    border: 10px solid;
-    border-radius: 20px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	padding: 3em 5em;
+	width: 960px;
+	background: rgba(255, 255, 255, 0.3);
 }
 
 .search-border {
-    border-width: 4px;
-    border-radius: 10px;
+	border-width: 2px;
+	border-radius: 10px;
 }
 
-.search-detail {
-    margin-top: 5%;
-    margin-bottom: 5%;
+.search-btn {
+	background-color: #f6d365;
+	color: #fff;
+	width: 800px;
+	font-weight: bold;
+	border: none;
+  cursor: pointer; /* カーソルをポインターに */
+  transition: background-color 0.3s ease;
 }
 
-.search-detail .btn {
-    color: #fff;
-    border: 4px solid white;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 200px;
-    font-weight: bold;
-}
-
-.search-country, .search-category {
-    color: yellow;
-    font-weight: bold;
-    width: 100%;
-    max-width: 480px; /* 各セクションの最大幅 */
-    margin-bottom: 5%;
-}
-
-@media (max-width: 768px) {
-    .search-form {
-        width: 95%;
-        padding: 2em 0.5em;
-    }
-
-    .search-detail .btn {
-        max-width: none;
-    }
+.search-btn:hover {
+	background-color: #e5b354; /* ホバー時の背景色 */
 }
 
 /* 検索結果一覧画面(food#index)のCSS（8/15追加） */
 .index-form {
-    width: 100%;
-    width: 960px; /* 最大幅を設定 */
-    margin: 0 auto;
-    background: #fff;
-    padding: 2rem 1rem;
+	margin-top: 30px;
+	background: #fff;
+	padding: 2rem 2rem;
 }
 
 .index-card {
-    border: 4px solid;
-    border-radius: 10px;
-    height: auto;
-    width: 100%;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1rem;
+	border: 4px solid;
+	border-radius: 10px;
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 1rem;
 }
 
 .index-card:hover {
-    transform: scale(1.05); /* カードを少し拡大 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を強調 */
+	transform: scale(1.05); /* カードを少し拡大 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を強調 */
 }
 
 .index-food-image {
-    width: 30%; /* カードの幅の30%に設定 */
-    max-width: 150px;
-    height: auto;
-    object-fit: cover;
+	width: 100px;
+	height: auto;
+	object-fit: contain; /* 画像全体を表示 */
 }
 
-@media (max-width: 768px) {
-    .index-card {
-        flex-direction: column;
-    }
+.index-card h5 {
+	color: #1ABC9C;
+}
 
-    .index-food-image {
-        width: 100%;
-        max-width: none;
-        height: 200px;
-    }
+.index-food-image {
+	width: 100%;
+	max-width: none;
+	height: 200px;
 }
 
 /* 食品詳細画面（food#show）のCSS（8/15追加） */
 .show-food-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	margin-top: 30px;
+	background: #fff;
+	padding: 2rem 2rem;
 }
 
 .show-food-image {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
+	max-width: 100%;
+	height: auto;
+	object-fit: contain;
 }
 
-.show-review-flex {
-    display: flex; /* フレックスボックスを使用 */
-    align-items: center; /* 垂直方向に中央揃え */
-    justify-content: space-between;
+.unfavorite-btn {
+	background-color: #f6d365;
+	color: #fff;
+	width: 200px;
+	font-weight: bold;
+	border: none;
+  cursor: pointer; /* カーソルをポインターに */
+  transition: background-color 0.3s ease;
 }
 
-.show-review-icon {
-    font-size: 24px;
+.unfavorite-btn:hover {
+	background-color: #e5b354; /* ホバー時の背景色 */
 }
 
-.show-review-title {
-    margin-bottom: 20px;
+.favorite-btn {
+	outline-color: #f6d365;
+  outline-style: solid;
+  outline-width: 2px;
+	color: #000;
+	width: 200px;
+	font-weight: bold;
+	background-color: transparent;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.show-review-title .btn {
-    border: 4px solid white;
-    border-radius: 10px;
-    width: 200px;
-    font-weight: bold; /* 文字を太くする */
-    font-size: 1.5rem;
+.favorite-btn:hover {
+	background-color: #f6d365; /* ホバー時の背景色 */
+	color: #fff; /* ホバー時のテキスト色 */
+}
+
+.show-food-form h2 {
+	color: #1ABC9C;
+}
+
+.subtitle p {
+	margin-top: 100px;
+	padding: 0.25em 0.5em;/*上下 左右の余白*/
+	color: #494949;/*文字色*/
+	background: transparent;/*背景透明に*/
+	border-left: solid 5px #f6d365;/*左線*/
+}
+
+.post-btn {
+	background-color: #f6d365;
+	color: #fff;
+	width: 200px;
+	font-weight: bold;
+	border: none;
+  cursor: pointer; /* カーソルをポインターに */
+  transition: background-color 0.3s ease;
+}
+
+.post-btn:hover {
+	background-color: #e5b354; /* ホバー時の背景色 */
 }
 
 .show-review-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	margin-top: 30px;
+	background: #fff;
+	padding: 2rem 2rem;
+}
+	
+.show-review-flex {
+display: flex; /* フレックスボックスを使用 */
+align-items: center; /* 垂直方向に中央揃え */
+justify-content: space-between;
+}
+
+.show-review-icon {
+font-size: 24px;
+}
+
+.show-review-unique-title {
+margin-bottom: 20px;
+}
+
+.show-review-unique-title .btn {
+border: 4px solid white;
+border-radius: 10px;
+width: 200px;
+font-weight: bold; /* 文字を太くする */
+font-size: 1.5rem;
 }
 
 .show-review {
-    height: 150px;
-    width: 800px;
+height: 150px;
+width: 800px;
 }
 
 /* ユーザー詳細画面（user#show）のCSS（8/15追加） */
 .user-show-form {
-    background: #fff;
-    padding: 20px;
+	margin-top: 30px;
+	background: #fff;
+	padding: 2rem 2rem;
 }
 
+.user-show-
 .user-image {
-    width:200px;
-    height: auto;
-    object-fit: cover;
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 2px solid #494949;
+	display: block;
+	margin: 0;
+}	
+
+.favorite-tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.favorite-tab h2 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+.favorite-tab h2:before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  display: inline-block;
+  width: 60px;
+  height: 5px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: #f6d365;
+  border-radius: 2px;
 }
 
 .user-comment {
-    font-size: 1.1rem;
-    color: #6c757d;
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .user-show-form {
-        text-align: center;
-    }
-    
-    .user-image {
-        margin-bottom: 20px;
-    }
+	font-size: 1.1rem;
+	color: #6c757d;
+	line-height: 1.6;
 }
 
 .favorite-food-form {
-    background: #fff;
-    padding: 20px;
+	background: #fff;
+	padding: 20px;
 }
 
-.favorite-food-title {
-    margin-bottom: 20px;
+.favorite-food-unique-title {
+	margin-bottom: 20px;
 }
-
-
 
 /* 食品レビュー投稿画面（review#new）のCSS（8/22追加） */
 .review-form {
-    width: 100%;
-    width: 960px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	margin-top: 30px;
+	background: #fff;
+	padding: 2rem 2rem;
+}
+
+.review-form h2 {
+	color: #1ABC9C;
 }
 
 .review-image {
-    width: 200px;
-    height: auto;
-    object-fit: cover /* 画像を切りとらない */
+	width: 200px;
+	height: auto;
+	object-fit: contain; /* 画像全体を表示 */
 }
 
 .review-form-item {
-    display: flex;
-    align-items: center;
-    margin-top: 1rem;
+	margin-top: 1rem;
+	display: flex;
+	align-items: center;
 }
 
 .review-form-item h6 {
-    width: 200px; /* タイトルの固定幅を設定 */
-    margin: 0;
-    font-weight: bold;
+	width: 200px; /* タイトルの固定幅を設定 */
+	margin: 0;
+	font-weight: bold;
 }
 
 .review-form-item span {
-    margin-left: 200px; /* タイトルの幅と同じスペースを確保 */
-    display: block;
-    font-size: 0.9rem;
-    color: #666;
+	margin-left: 200px; /* タイトルの幅と同じスペースを確保 */
+	display: block;
+	font-size: 0.9rem;
+	color: #666;
 }
 
 .review-form-input, .spice-level {
-    flex-grow: 1; /* 残りのスペースを占有 */
+	flex-grow: 1; /* 残りのスペースを占有 */
 }
 
 .spice-level i {
-    font-size: 30px;
-    cursor: pointer;
-    color: #cccccc; /* デフォルトの色 */
-    margin-right: 5px;
+	font-size: 30px;
+	cursor: pointer;
+	color: #cccccc; /* デフォルトの色 */
+	margin-right: 5px;
 }
 
 .spice-level i.selected {
-    color: red !important; /* 選択されたアイコンの色 */
+	color: red !important; /* 選択されたアイコンの色 */
 }
 
-.review-form .btn {
-    border: 4px solid white;
-    border-radius: 10px;
-    width: 200px;
-    font-weight: bold; /* 文字を太くする */
-    font-size: 1.5rem;
+.review-btn {
+	background-color: #f6d365;
+	color: #fff;
+	width: 200px;
+	font-weight: bold;
+	border: none;
+  cursor: pointer; /* カーソルをポインターに */
+  transition: background-color 0.3s ease;
+}
+
+.review-btn:hover {
+	background-color: #e5b354; /* ホバー時の背景色 */
 }
 
 /* 食品レビュー投稿画面（page#about）のCSS（8/23追加） */
 .about-form {
-    position: absolute;
-    padding: 3em 1em;
-    width: 960px;
-    background: #fff;
+	position: absolute;
+	margin-top: 30px;
+	padding: 3em 1em;
+	width: 960px;
+	background: #fff;
 }
 
-
-
-
-
-
-
-
-
-
-
-/* 
----------------------------------------------
-ログイン画面のCSS（8/15追加）
---------------------------------------------- 
-*/
-
-.form-wrapper {
-    background: #fafafa;
-    margin: 3em auto;
-    padding: 0 1em;
-    max-width: 370px;
+/* 新規登録画面（user#new）のCSS（8/25追加） */
+.user-new-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background: #fff;
+  margin: 3em auto;
+  padding: 0 1em;
+  max-width: 370px;
 }
 
-
-form {
-    padding: 0 1.5em;
+.user-new-container h1 {
+	text-align: center;
+  padding: 1em 1em;
+	font-weight: bold;
 }
 
 .form-item {
-    margin-bottom: 0.75em;
-    width: 100%;
+	margin-bottom: 0.75em;
+	width: 100%;
 }
 
 .form-item input {
-    background: #fafafa;
-    border: none;
-    border-bottom: 2px solid #e9e9e9;
-    color: #666;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
-    height: 50px;
-    transition: border-color 0.3s;
-    width: 100%;
-}
-
-.form-item input:focus {
-    border-bottom: 2px solid #c0c0c0;
-    outline: none;
+background: #fff;
+border: none;
+border-bottom: 2px solid #1ABC9C;
+height: 50px;
+width: 100%;
 }
 
 .form-footer {
-    font-size: 1em;
-    padding: 2em 0;
-    text-align: center;
+font-size: 1em;
+padding: 2em 0;
+text-align: center;
 }
 
 .form-footer a {
-    color: #8c8c8c;
-    text-decoration: none;
-    transition: border-color 0.3s;
+color: #494949;
+text-decoration: none;
+transition: border-color 0.3s;
 }
 
-.form-footer a:hover {
-    border-bottom: 1px dotted #8c8c8c;
+.user-new-btn {
+	background-color: #f6d365;
+	text-align: center;
+	color: #fff;
+	width: 300px;
+	font-weight: bold;
+	border: none;
+  cursor: pointer; /* カーソルをポインターに */
+  transition: background-color 0.3s ease;
+	margin-top: 20px;
+}
+
+.user-new-btn:hover {
+	background-color: #e5b354; /* ホバー時の背景色 */
 }
 

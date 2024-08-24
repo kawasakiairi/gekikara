@@ -4,76 +4,72 @@
 <div class="container my-5">
 
   <!-- タイトル -->
-  <div class="text-center">
+  <div class="title">
     <h1><%= I18n.t("food.index.title") %></h1>
+  </div>
+  <div class="subtitle">
     <% if @total_count != 0 %>
-      <% count_html = content_tag(:span, @total_count, class: "fw-bold text-primary display-6") %>
-      <span>
-        <%= I18n.t("food.index.subtitle", count: count_html).html_safe %>
-      </span>
+      <% count_html = content_tag(:span, @total_count, class: "fw-bold text-primary") %>
+      <p><%= I18n.t("food.index.subtitle", count: count_html).html_safe %></p>
     <% else %>
-      <h5 class="text-info pt-2">
-        <%= I18n.t("food.index.no_food") %>
-      </h5>
+      <p><%= I18n.t("food.index.no_food") %></p>
     <% end %>
   </div>
 
   <!-- 検索結果一覧 -->
   <% if @foods.present? %>
-    <div class="index-form">    
+    <div class="index-form"> 
+
       <!-- ページネーション -->
-      <div class="mt-4 me-4 text-end text-primary">
-        <%= link_to I18n.t("views.pagination.new"), foods_path(sort: 'new'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'new'}" %>
-        <%= link_to I18n.t("views.pagination.old"), foods_path(sort: 'old'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'old'}" %>
-        <%= link_to I18n.t("views.pagination.hot"), foods_path(sort: 'hot'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'hot'}" %>
-        <%= link_to I18n.t("views.pagination.mild"), foods_path(sort: 'mild'), class: "text-decoration-none #{'text-decoration-underline' if @current_sort == 'mild'}" %>
+      <div class="text-end">
+        <%= link_to I18n.t("views.pagination.new"), foods_path(sort: 'new'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'new'}", style: "color: #fda085;" %>
+        <%= link_to I18n.t("views.pagination.old"), foods_path(sort: 'old'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'old'}", style: "color: #fda085;" %>
+        <%= link_to I18n.t("views.pagination.hot"), foods_path(sort: 'hot'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'hot'}", style: "color: #fda085;" %>
+        <%= link_to I18n.t("views.pagination.mild"), foods_path(sort: 'mild'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'mild'}", style: "color: #fda085;" %>
       </div>
 
       <!-- 検索結果カード -->
-      <div class="mx-4">
-        <div class="row mb-5">
-          <% @foods.each do |food| %>
-            <div class="col-6 pt-4 d-flex">
-              <%= link_to food_path(food), class: "card index-card border-primary d-flex flex-row text-decoration-none" do %>
-                <!-- 食品写真 -->
-                <div class="d-flex align-items-center px-2">
-                  <%= image_tag(food.food_image.present? ? food.food_image.url : "image_ramen.png", class: "img-fluid index-food-image") %>
-                </div>
-                <div class="d-flex flex-column me-2">
-                  <!-- 食品名 -->
-                  <h5 class="card-title fw-bold mt-2 text-primary">
-                    <%= food.name %>
-                  </h5>
-                  <!-- 食品タグ -->
-                  <h6 class="fw-bold">
-                    <span class="badge rounded-pill bg-danger"><%= food.food_category.name %></span>
-                  </h6>
-                  <!-- 辛さレベル -->
-                  <span class="card-text fw-bold">
-                    <%=  I18n.t("activerecord.attributes.food.spice_level") %>
-                    <% food.spice_level.times do %>
-                      <i class="bi bi-fire text-danger"></i>
-                    <% end %>
-                    <% (5 - food.spice_level).times do %>
-                      <i class="bi bi-fire text-secondary"></i>
-                    <% end %>
-                  </span>
-                  <!-- 希望小売価格 -->
-                  <span class="card-text fw-bold">
-                    <%=  I18n.t("activerecord.attributes.food.price") %>
-                    <% if food.price != 0 %>
-                      <%= number_to_currency(food.price, unit: I18n.t("food.index.en"), format: "%n %u", precision: 0) %><%= I18n.t("food.index.in_price") %>
-                    <% else %>
-                      <%= I18n.t("food.index.open_price") %>
-                    <% end %>
-                  </span>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+      <div class="row">
+        <% @foods.each do |food| %>
+          <div class="col-6 mt-4 d-flex">
+            <%= link_to food_path(food), class: "card index-card border-primary d-flex flex-row text-decoration-none" do %>
+              <!-- 食品写真 -->
+              <div class="d-flex align-items-center">
+                <%= image_tag(food.food_image.present? ? food.food_image.url : "image_ramen.png", class: "img-fluid index-food-image") %>
+              </div>
+              <div class="d-flex flex-column mt-4 me-2">
+                <!-- 食品名 -->
+                <h5 class="card-title fw-bold"><%= food.name %></h5>
+                <!-- 食品タグ -->
+                <h6 class="fw-bold"><span class="badge rounded-pill bg-danger"><%= food.food_category.name %></span></h6>
+                <!-- 辛さレベル -->
+                <span class="card-text fw-bold">
+                  <%=  I18n.t("activerecord.attributes.food.spice_level") %>
+                  <!-- 赤 -->
+                  <% food.spice_level.times do %>
+                    <i class="bi bi-fire text-danger"></i>
+                  <% end %>
+                  <!-- グレー -->        
+                  <% (5 - food.spice_level).times do %>
+                    <i class="bi bi-fire text-secondary"></i>
+                  <% end %>
+                </span>
+                <!-- 希望小売価格 -->
+                <span class="card-text fw-bold">
+                  <%=  I18n.t("activerecord.attributes.food.price") %>
+                  <% if food.price != 0 %>
+                    <%= number_to_currency(food.price, unit: I18n.t("food.index.en"), format: "%n %u", precision: 0) %><%= I18n.t("food.index.in_price") %>
+                  <% else %>
+                    <%= I18n.t("food.index.open_price") %>
+                  <% end %>
+                </span>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
         <!-- ページネーション -->
-        <div class="mt-3">
+        <div class="mt-3 custom-pagination">
           <%= paginate @foods, theme: 'bootstrap-5' %>
         </div>
       </div>

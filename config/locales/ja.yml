@@ -50,7 +50,7 @@ ja:
   about:
     title: "ゲキカラ、ドウ？とは"
     body_1: "ゲキカラ、ドウは、激辛料理愛好家のための究極のアプリです。"
-    body_2: "日本全国の激辛メニューを簡単に探せ、あなたの辛さ耐性に合わせた料理を見つけることができます。"
+    body_2: "日本全国の激辛メニューを簡単に探せ、あなたの辛さ耐性に合わせた食品を見つけることができます。"
     function: "主な機能："
     function1: "1. 激辛メニュー検索"
     function1_body1: "国、食品カテゴリ、価格帯、キーワードから食品を検索できます。"
@@ -63,7 +63,6 @@ ja:
     search:
       title: "ゲキカラ、ドウ？"
       subtitle: "辛さを極めるあなたに贈る、究極の激辛食品検索アプリ"
-      find_spicy: "理想の辛さを探し出そう！"
       keyword: "キーワード"
       from: "から探す" 
     index:
@@ -74,10 +73,10 @@ ja:
       open_price: "オープン価格"
       no_food: "検索結果が見つかりませんでした。条件を変えて再度検索してください。"
     show:
-      title: "%{food_name}の詳細"
+      title: "食品詳細"
       favorite: "お気に入りに追加"
       unfavorite: "お気に入りから削除"
-      review: "%{food_name}のレビュー"
+      review: "レビュー"
       no_review: "まだレビューがありません。最初のレビューを書いてみませんか？"
   
   review:
@@ -99,12 +98,12 @@ ja:
       title: "新規登録"
     show:
       title: "%{name}のページ"
-      favorite: "お気に入り登録した食品一覧"
+      favorite: "お気に入り食品一覧"
       unfavorite: "お気に入りの食品はまだありません。"
 
   buttons:
     search: "検索する"
-    post: "投稿する"
+    post: "レビューを投稿する"
     confirm: "本当に削除しますか？"
     update: "更新する"
     login: "ログインする"
