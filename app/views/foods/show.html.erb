@@ -23,7 +23,7 @@
               <i class="bi bi-bookmark-heart-fill"></i><%= I18n.t("food.show.unfavorite") %>
             <% end %>
           <% else %>
-            <%= link_to current_user ? favorite_food_path(@food) : login_path, method: :post, remote: true, class: "btn favorite-btn" do %>
+            <%= button_to favorite_food_path(@food), method: :post, remote: true, class: "btn favorite-btn" do %>
               <i class="bi bi-bookmark-heart"></i><%= I18n.t("food.show.favorite") %>
             <% end %>
           <% end %>
