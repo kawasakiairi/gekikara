@@ -25,6 +25,8 @@ ja:
       user:
         name: ユーザー名
         email: メールアドレス
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
         comment: コメント
         profile_image: ユーザー画像
       review:
@@ -33,7 +35,16 @@ ja:
         spice_level: 辛さレベル
         food_id: 食品
         user_id: ユーザー
-    
+    errors:
+      models:
+        review:
+          attributes:
+            spice_level:
+              blank: "をクリックしてください。"
+            user_id:
+              taken: "はすでにこの食品にレビューを投稿しています。"
+
+
   application:
     title: "ゲキカラ、ドウ？"
   
@@ -78,8 +89,10 @@ ja:
       unfavorite: "お気に入りから削除"
       review: "レビュー"
       no_review: "まだレビューがありません。最初のレビューを書いてみませんか？"
-      confirm_favorite: "お気に入りに追加するにはログインが必要です。ログインしますか？"
-      confirm_review: "レビューを投稿するにはログインが必要です。ログインしますか？"
+    favorite:
+      notice: "お気に入りに追加しました。"
+    unfavorite:
+      notice: "お気に入りから削除しました。"
 
   review:
     new:
@@ -88,13 +101,27 @@ ja:
       review_title: "タイトル"
       rating: "感想・コメント"
       remaining_characters: "※あと%{count}文字記入できます。"
+    create:
+      notice: "レビューの投稿に成功しました。"
+      alert: "レビューの投稿に失敗しました。"
     edit:
       title: "食品レビューを編集する"
+    update:
+      notice: "レビューの編集に成功しました。"
+      alert: "レビューの編集に失敗しました。"
+    destroy:
+      notice: "レビューが削除されました。"
+      alert: "レビューの削除に失敗しました。"
 
   user_session:
     new:
       title: "ログイン"
       alert: "ログインしてください"
+    create:
+      notice: "ログインに成功しました。"
+      alert: "ログインに失敗しました。"
+    destroy:
+      notice: "ログアウトしました。"
   
   user:
     new:
@@ -103,6 +130,9 @@ ja:
       title: "%{name}のページ"
       favorite: "お気に入り食品一覧"
       unfavorite: "お気に入りの食品はまだありません。"
+    create:
+      notice: "ユーザーの作成に成功しました。"
+      alert: "ユーザーの作成に失敗しました。"
 
   buttons:
     search: "検索する"

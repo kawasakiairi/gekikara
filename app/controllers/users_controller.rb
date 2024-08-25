@@ -12,10 +12,10 @@
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id # 自動的にログインさせる
-      flash[:notice] = 'ユーザーの作成に成功しました'
+      flash[:notice] = I18n.t("user.create.notice")
       redirect_to root_path
     else
-      flash.now[:alert] = 'ユーザーの作成に失敗しました'
+      flash.now[:alert] = I18n.t("user.create.alert")
       render :new, status: :unprocessable_entity
     end
   end

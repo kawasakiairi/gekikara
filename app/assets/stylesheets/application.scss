@@ -353,27 +353,8 @@ width: 800px;
 	object-fit: contain; /* 画像全体を表示 */
 }
 
-.review-form-item {
-	margin-top: 1rem;
-	display: flex;
-	align-items: center;
-}
-
-.review-form-item h6 {
-	width: 200px; /* タイトルの固定幅を設定 */
-	margin: 0;
-	font-weight: bold;
-}
-
-.review-form-item span {
-	margin-left: 200px; /* タイトルの幅と同じスペースを確保 */
-	display: block;
-	font-size: 0.9rem;
-	color: #666;
-}
-
-.review-form-input, .spice-level {
-	flex-grow: 1; /* 残りのスペースを占有 */
+.spice-level {
+  display: flex;
 }
 
 .spice-level i {
@@ -465,6 +446,10 @@ transition: border-color 0.3s;
 	margin-top: 20px;
 }
 
+.spice_level .review-form-input {
+	width: 700px;
+}
+
 .user-new-btn:hover {
 	background-color: #e5b354; /* ホバー時の背景色 */
 }
@@ -472,6 +457,7 @@ transition: border-color 0.3s;
 /* フラッシュメッセージ（8/25追加） */
 .flash-message {
 	padding: 1em 1em;
+  margin: 0em 0em;
 }
  
 .flash-message.notice {
