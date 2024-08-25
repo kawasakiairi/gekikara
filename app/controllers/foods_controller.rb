@@ -64,12 +64,12 @@ class FoodsController < ApplicationController
   # お気に入り食品機能（8/23追加）
   def favorite
     current_user.favorite(@food)
-    redirect_to @food, notice: 'お気に入りに追加しました'
+    redirect_to @food, notice: I18n.t("food.favorite.notice")
   end
 
   def unfavorite
     current_user.unfavorite(@food)
-    redirect_to @food, notice: 'お気に入りから削除しました'
+    redirect_to @food, notice: I18n.t("food.unfavorite.notice")
   end
 
   private

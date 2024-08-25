@@ -1,10 +1,21 @@
 class Review < ApplicationRecord
   before_validation :convert_spice_level_to_integer
+
   # 外部キー制約（8/13追加）
   belongs_to :food
   belongs_to :user
 
-  validates :spice_level, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
+  # タイトルのバリデーション
+  validates :title, presence: true, length: { maximum: 20 }
+
+  # 感想・コメントのバリデーション
+  validates :rating, presence: true, length: { maximum: 200 }
+
+  # 辛さレベルのバリデーション
+  validates :spice_level, presence: true
+
+  # レビュー回数制限
+  validates :user_id, uniqueness: { scope: :food_id }
 
   private
   # データ型変換（8/21追加）

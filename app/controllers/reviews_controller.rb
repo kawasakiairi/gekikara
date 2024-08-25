@@ -11,10 +11,10 @@ class ReviewsController < ApplicationController
     @food = Food.find(params[:food_id])
     @review = @food.reviews.build(review_params.merge(user: current_user))
     if @review.save
-      flash[:notice] = "レビューの投稿に成功しました"
+      flash[:notice] = I18n.t("review.create.notice")
       redirect_to food_path(@food)
     else
-      flash.now[:alert] = "レビューの投稿に失敗しました"
+      flash.now[:alert] = I18n.t("review.create.alert")
       render :new, status: :unprocessable_entity
     end
   end
@@ -29,10 +29,10 @@ class ReviewsController < ApplicationController
     @food = Food.find(params[:food_id])
     @review = @food.reviews.find(params[:id])
     if @review.update(review_params)
-      flash[:notice] = "レビューの編集に成功しました"
+      flash[:notice] = I18n.t("review.update.notice")
       redirect_to food_path(@food)
     else
-      flash.now[:alert] = "レビューの編集に失敗しました"
+      flash.now[:alert] = I18n.t("review.update.alert")
       render :edit, status: :unprocessable_entity
     end
   end
@@ -44,9 +44,9 @@ class ReviewsController < ApplicationController
     @review.destroy!
 
     if @review.destroy
-      redirect_to food_path(@food), notice: 'レビューが削除されました。', status: :see_other
+      redirect_to food_path(@food), notice: I18n.t("review.destroy.notice"), status: :see_other
     else
-      redirect_to food_path(@food), alert: 'レビューの削除に失敗しました。', status: :unprocessable_entity
+      redirect_to food_path(@food), alert: I18n.t("review.destroy.alert"), status: :unprocessable_entity
     end
   end
 

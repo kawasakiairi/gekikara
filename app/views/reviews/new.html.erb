@@ -46,11 +46,14 @@
     </div>
 
     <!-- レビュー投稿 -->
-    <%= form_with model: [@food, @review] do |f| %>
-      <%= f.hidden_field :food_id, value: @food.id %>
-      <div class="review-form-item text-primary">
+    <%= form_with model: [@food, @review], local: true, data: { turbo: false } do |f| %>
+      <!-- エラーメッセージ（8/25追加） -->
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.hidden_field :food_id, value: @food.id %>    
+      <div class="mt-3">
         <!-- 辛さレベル -->
-        <h6><%= I18n.t("review.new.spice_level") %></h6>
+        <h5 class="text-primary fw-bold"><%= I18n.t("review.new.spice_level") %></h5>
         <%= f.hidden_field :spice_level, id: 'spice_level' %>
         <div class="spice-level">
           <i class="bi bi-fire text-secondary" data-value="1"></i>
@@ -60,26 +63,31 @@
           <i class="bi bi-fire text-secondary" data-value="5"></i>
         </div>
       </div>
-      <div class="review-form-item text-primary">
+
+      <div class="mt-3">
         <!-- タイトル -->
-        <h6><%= I18n.t("review.new.review_title") %></h6>
-        <%= f.text_field :title, class: "review-form-input", title_maxlength: 20, id: "title_text_field" %>
+        <h5 class="text-primary fw-bold"><%= I18n.t("review.new.review_title") %></h5>
+        <%= f.text_field :title, class: "form-control", title_maxlength: 20, id: "title_text_field" %>
       </div>
-      <div class="review-form-item mt-0">
+
+      <div class="mt-0">
         <span id="title_char_count">
           <%= I18n.t("review.new.remaining_characters", count: 20 - (@review.title&.length || 0)) %>
         </span>
       </div>
-      <div class="review-form-item text-primary">
+
+      <div class="mt-3">
         <!-- 感想・コメント -->
-        <h6><%= I18n.t("review.new.rating") %></h6>
-        <%= f.text_area :rating, class: "review-form-input", rows: 5, cols: 40, text_maxlength: 200, id: "rating_text_area" %>
+        <h5 class="text-primary fw-bold"><%= I18n.t("review.new.rating") %></h5>
+        <%= f.text_area :rating, class: "form-control", rows: 5, cols: 40, text_maxlength: 200, id: "rating_text_area" %>
       </div>
-      <div class="review-form-item mt-0">
-        <span id="title_char_count">
-          <%= I18n.t("review.new.remaining_characters", count: 200 - (@review.title&.length || 0)) %>
+
+      <div class="mt-0">
+        <span id="text_char_count">
+          <%= I18n.t("review.new.remaining_characters", count: 200 - (@review.rating&.length || 0)) %>
         </span>
       </div>
+
       <div class="text-end mt-4">
         <%= f.submit I18n.t("buttons.post"), class: "btn review-btn" %>
       </div>
