@@ -469,3 +469,17 @@ transition: border-color 0.3s;
 	background-color: #e5b354; /* ホバー時の背景色 */
 }
 
+/* フラッシュメッセージ（8/25追加） */
+.flash-message {
+	padding: 1em 1em;
+}
+ 
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067C0;
+}
+ 
+.flash-message.alert {
+  background-color: #ffd4d1;
+  color: #930403;
+}

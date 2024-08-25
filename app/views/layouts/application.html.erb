@@ -34,6 +34,8 @@
         <%= breadcrumbs separator: " &rsaquo; " %>
       </div>
 
+      <!-- フラッシュメッセージ（8/25追加） -->
+      <%= render 'shared/flash_message' %>
       <%= yield %>
     </main>
 

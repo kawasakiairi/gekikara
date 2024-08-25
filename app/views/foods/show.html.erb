@@ -18,17 +18,15 @@
         <div class="d-flex flex-column align-items-center">
           <%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png", class: "img-fluid show-food-image") %>
           <!-- お気に入り食品機能（8/23追加） -->
-          <% if current_user %>
-            <% if current_user.favorite?(@food) %>
-              <%= button_to unfavorite_food_path(@food), method: :delete, remote: true, class: "btn unfavorite-btn" do %>
-                <i class="bi bi-bookmark-heart-fill"></i><%= I18n.t("food.show.unfavorite") %>
-              <% end %>
-            <% else %>
-              <%= button_to favorite_food_path(@food), method: :post, remote: true, class: "btn favorite-btn" do %>
-                <i class="bi bi-bookmark-heart"></i><%= I18n.t("food.show.favorite") %>
-              <% end %>
+          <% if current_user && current_user.favorite?(@food) %>
+            <%= button_to unfavorite_food_path(@food), method: :delete, remote: true, class: "btn unfavorite-btn" do %>
+              <i class="bi bi-bookmark-heart-fill"></i><%= I18n.t("food.show.unfavorite") %>
             <% end %>
-          <% end %>          
+          <% else %>
+            <%= link_to current_user ? favorite_food_path(@food) : login_path, method: :post, remote: true, class: "btn favorite-btn" do %>
+              <i class="bi bi-bookmark-heart"></i><%= I18n.t("food.show.favorite") %>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div class="col-md-6 mt-4">

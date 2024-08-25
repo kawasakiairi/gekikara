@@ -78,7 +78,9 @@ ja:
       unfavorite: "お気に入りから削除"
       review: "レビュー"
       no_review: "まだレビューがありません。最初のレビューを書いてみませんか？"
-  
+      confirm_favorite: "お気に入りに追加するにはログインが必要です。ログインしますか？"
+      confirm_review: "レビューを投稿するにはログインが必要です。ログインしますか？"
+
   review:
     new:
       title: "食品レビューを書く"
@@ -92,6 +94,7 @@ ja:
   user_session:
     new:
       title: "ログイン"
+      alert: "ログインしてください"
   
   user:
     new:
@@ -132,6 +135,8 @@ ja:
       old: "古い順"
       hot: "辛い順"
       mild: "辛くない順"
+
+        
     
 
       
