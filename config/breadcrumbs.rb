@@ -31,7 +31,7 @@ crumb :review_edit do |food|
 end
 
 # ユーザーページ
-crumb :user_show do |user|
+crumb :user_show do |user, food|
   link "#{user.name}のページ", user_path(user)
-  parent :root
+  parent :food_show, food
 end

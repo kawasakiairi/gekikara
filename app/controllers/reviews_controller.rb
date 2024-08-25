@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   # レビュー投稿ページ（8/21追加）
   def new
     @body_class = "background"
-
     @food = Food.find(params[:food_id])
     @review = @food.reviews.new
   end

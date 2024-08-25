@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   # ユーザーが認証されていない場合に呼び出されるメソッド
   # sorceryを使用する場合、require_loginのなかで実行され、ログインページにリダイレクトする（8/12追加）
   def not_authenticated
-    redirect_to login_path, alert: 'ログインしてください'
+    redirect_to login_path, alert: I18n.t("user_session.new.alert")
   end
 
   def food_search_params
