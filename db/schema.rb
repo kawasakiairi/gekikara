@@ -41,12 +41,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_26_065854) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "spice_level", null: false, comment: "辛さレベル"
-    t.decimal "price", precision: 10, scale: 2, null: false, comment: "希望小売価格"
     t.string "title", null: false, comment: "タイトル"
     t.string "body", null: false, comment: "説明"
     t.bigint "food_category_id", comment: "食品カテゴリ"
     t.bigint "food_country_id", comment: "国名カテゴリ"
     t.string "food_image", comment: "食品画像"
+    t.decimal "price", precision: 10, scale: 2, comment: "希望小売価格"
     t.string "from", comment: "出典"
     t.index ["food_category_id"], name: "index_foods_on_food_category_id"
     t.index ["food_country_id"], name: "index_foods_on_food_country_id"
