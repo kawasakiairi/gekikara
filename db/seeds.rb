@@ -9,16 +9,10 @@ ApplicationRecord.transaction do
   # FoodCategoryモデル追加（8/11追加）
   FoodCategory.find_or_create_by(id: 1) { |category| category.update(name: 'ラーメン') }
   FoodCategory.find_or_create_by(id: 2) { |category| category.update(name: '焼きそば') }
-  FoodCategory.find_or_create_by(id: 3) { |category| category.update(name: 'カレー') }
-  FoodCategory.find_or_create_by(id: 4) { |category| category.update(name: 'パスタ') }
-  FoodCategory.find_or_create_by(id: 5) { |category| category.update(name: '調味料') }
-  FoodCategory.find_or_create_by(id: 6) { |category| category.update(name: 'その他') }
+  FoodCategory.find_or_create_by(id: 3) { |category| category.update(name: 'その他') }
 
   # FoodCountryモデル追加（8/11追加）
   FoodCountry.find_or_create_by(id: 1) { |category| category.update(name: '韓国') }
-  FoodCountry.find_or_create_by(id: 2) { |category| category.update(name: '中国') }
-  FoodCountry.find_or_create_by(id: 3) { |category| category.update(name: 'イタリア') }
-  FoodCountry.find_or_create_by(id: 4) { |category| category.update(name: 'インド') }
 
   # Foodモデル登録（8/11追加）
   Food.create(id: 1, name: '辛ラーメン 袋麺', spice_level: '3', price: '212', title: '本場韓国の辛さで人気の高い“うまからっ！”でおなじみ「辛ラーメン」。', body: '厳選した唐辛子の「辛さ」、ブレンドしたオリジナルスパイスと素材の旨み成分がたっぷり溶け込んだ「旨味スープ」、「旨さ」と「辛さ」がマッチした絶妙なおいしさがクセになる「うまからっ！」味です。特殊な方法で作られた楕円形の麺によるなめらかな口当たり、特別に配合した高級麺用の小麦粉を使用したコシのある麺を特徴とした製品です。', food_category_id: 1, food_country_id: 1, food_image: File.open(Rails.root.join('db/seeds/foods/01_辛ラーメン_袋麺.jpg')), from: '株式会社農心ジャパン')
@@ -44,20 +38,6 @@ ApplicationRecord.transaction do
   Food.create(id: 21, name: '甘辛ヤンニョムチキンビビン麺 カップ', spice_level: '4', price: 'null', title: '韓国の定番料理ヤンニョムチキンをカップ麺で再現した甘辛いビビン麺。', body: 'ヤンニョムのコチュジャン、胡椒、にんにく、生姜などのスパイシーな辛さ、ケチャップの優しい酸味、ハチミツやリンゴのフルーティで自然な甘みで、飽きのこない甘辛ソースが絶品です。トッピングの香ばしいピーナッツ、パセリがアクセントに。', food_category_id: 6, food_country_id: 1, food_image: File.open(Rails.root.join('db/seeds/foods/21_甘辛ヤンニョムチキンビビン麺_カップ.png')), from: '株式会社農心ジャパン')
 
   # Userモデル登録（8/12追加）
-  User.create(id: 1, name: '重岡大毅', email: 'shigeoka_daiki@west.com', password: 'password', password_confirmation: 'password', comment: '重岡大毅です。', profile_image: File.open(Rails.root.join('db/seeds/users/ichigo.png')))
-  User.create(id: 2, name: '桐山照史', email: 'kiriyama_akito@west.com', password: 'password', password_confirmation: 'password', comment: '桐山照史です。', profile_image: File.open(Rails.root.join('db/seeds/users/hotdog.png')))
-  User.create(id: 3, name: '中間淳太', email: 'nakama_junta@west.com', password: 'password', password_confirmation: 'password', comment: '中間淳太です。', profile_image: File.open(Rails.root.join('db/seeds/users/penpen.png')))
-  User.create(id: 4, name: '神山智洋', email: 'kamiyama_tomohiro@west.com', password: 'password', password_confirmation: 'password', comment: '神山智洋です。', profile_image: File.open(Rails.root.join('db/seeds/users/piyotish.png')))
-  User.create(id: 5, name: '藤井流星', email: 'fuji_ryusei@west.com', password: 'password', password_confirmation: 'password', comment: '藤井流星です。', profile_image: File.open(Rails.root.join('db/seeds/users/kawausopiyo.png')))
-  User.create(id: 6, name: '濵田崇裕', email: 'hamada_takahiro@west.com', password: 'password', password_confirmation: 'password', comment: '濵田崇裕です。', profile_image: File.open(Rails.root.join('db/seeds/users/kanipiyo.png')))
-  User.create(id: 7, name: '小瀧望', email: 'kotaki_nozomu@west.com', password: 'password', password_confirmation: 'password', comment: '小瀧望です。', profile_image: File.open(Rails.root.join('db/seeds/users/kirin-piyotaso.png')))
 
   # Reviewモデル（8/13追加）
-  Review.create(id: 1, title: 'めっちゃ美味しい1', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 1)
-  Review.create(id: 2, title: 'めっちゃ美味しい2', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 2)
-  Review.create(id: 3, title: 'めっちゃ美味しい3', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 3)
-  Review.create(id: 4, title: 'めっちゃ美味しい4', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 4)
-  Review.create(id: 5, title: 'めっちゃ美味しい5', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 5)
-  Review.create(id: 6, title: 'めっちゃ美味しい6', rating: 'めっちゃ美味しかったです。', spice_level: 4, food_id: 1, user_id: 6)
-  Review.create(id: 8, title: 'ああああああああああああああああああああ', rating: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, animi officiis veniam est, modi soluta non impedit consequuntur cupiditate exercitationem expedita porro. Architecto a ab, beatae pariatur sequi ipsa facilis?', spice_level: 4, food_id: 1, user_id: 7)
 end
