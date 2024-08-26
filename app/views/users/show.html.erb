@@ -13,10 +13,10 @@
   <div class="user-show-form">
     <div class="row">
       <!-- ユーザー画像 -->
-      <div class="col-md-3 d-flex align-items-center">
+      <div class="col-6 col-md-3 d-flex">
         <%= image_tag(@user.profile_image.present? ? @user.profile_image.url : "user-image.png", class: "img-fluid user-image") %>
       </div>
-      <div class="col-md-9 mt-4">
+      <div class="col-6 col-md-9 mt-4">
         <h2 class="fw-bold">
           <%= @user.name %>
         </h2>
@@ -43,7 +43,7 @@
     <div class="favorite-food-form">
       <div class="row">
         <% @favorite_foods.each do |favorite| %>
-          <div class="col-6 mt-4 d-flex">
+          <div class="col-12 col-md-6 col-m mt-4 d-flex">
             <%= link_to food_path(favorite), class: "card index-card border-primary d-flex flex-row text-decoration-none" do %>
               <!-- 食品写真 -->
               <div class="d-flex align-items-center">

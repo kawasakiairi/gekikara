@@ -1,29 +1,29 @@
 <header>
-    <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
 
-        <div class="container">
-            <!-- ハンバーガーメニュー -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class="container-fluid">
+      <!-- ハンバーガーメニュー -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <!-- ナビゲーション -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="container navbar-nav d-flex justify-content-end fw-bold">
-                    <li class="nav-item">
-                        <%= link_to I18n.t("header.home"), root_path, class: "nav-link text-white" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to I18n.t("header.about"), about_path, class: "nav-link text-white" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to I18n.t("header.mypage", name: current_user.name), user_path(current_user), class: "nav-link text-white" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to I18n.t("header.logout"), logout_path, class: "nav-link text-white", data: { turbo_method: :delete } %>
-                    </li>                    
-                </ul>
-            </div>
-        </div>
-    </nav>
+      <!-- ナビゲーション -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <%= link_to I18n.t("header.home"), root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to I18n.t("header.about"), about_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to I18n.t("header.mypage", name: current_user.name), user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to I18n.t("header.logout"), logout_path, class: "nav-link", data: { turbo_method: :delete } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>

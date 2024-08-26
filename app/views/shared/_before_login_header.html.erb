@@ -1,38 +1,33 @@
 <header>
-    <nav class="navbar navbar-expand-lg navigation navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
 
-        <div class="container-fluid">
-            <!-- ブランド名 -->
-            <%= link_to root_path, class: "navbar-brand" do %>
-                <%= image_tag "logo1.png" %>
-            <% end %>  
+    <div class="container-fluid">
+      <!-- ハンバーガーメニュー -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <!-- ハンバーガーメニュー -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- ナビゲーション -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <%= link_to I18n.t("header.home"), root_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to I18n.t("header.about"), about_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to I18n.t("header.before_login"), login_path, class: "nav-link" %>
-                    </li>
-                </ul>
-                <!-- 検索フォーム -->
-                <%= form_with(scope: :search, url: foods_path, method: :get, local: true) do |f| %>
-                    <div class="d-flex">
-                        <%= f.text_field :keyword, value: @search_params[:keyword], class:"form-control me-sm-2", placeholder: I18n.t("placeholder.keyword") %>
-                        <%= f.submit I18n.t("buttons.search"), class:"btn btn-secondary my-2 my-sm-0" %>
-                    </div>
-                <% end %>
-            </div>
-        </div>
-    </nav>
+      <!-- ナビゲーション -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <%= link_to I18n.t("header.home"), root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to I18n.t("header.about"), about_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to I18n.t("header.before_login"), login_path, class: "nav-link" %>
+          </li>
+        </ul>
+        <!-- 検索フォーム -->
+        <%= form_with(scope: :search, url: foods_path, method: :get, local: true) do |f| %>
+          <div class="d-flex">
+            <%= f.text_field :keyword, value: @search_params[:keyword], class:"form-control me-sm-2", placeholder: I18n.t("placeholder.keyword") %>
+            <%= f.submit I18n.t("buttons.search"), class:"btn btn-secondary my-2 my-sm-0" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </nav>
 </header>
