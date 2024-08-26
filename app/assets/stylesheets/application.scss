@@ -3,6 +3,31 @@
 @import "bootstrap-icons";
 @import "bootswatch/bootstrap";
 
+/* メディアクエリ対応 */
+@media (max-width: 576px) {
+	.container {
+		max-width: 100%;
+	}
+}
+
+@media (min-width: 577px) and (max-width: 769px) {
+	.container {
+		max-width: 540px;
+	}	
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+	.container {
+		max-width: 720px;
+	}
+}
+
+@media (min-width: 993px) {
+	.container {
+		max-width: 960px;
+	}
+}
+
 /* 共通画面のCSS（8/15追加） */
 :root {
   --bs-primary: #fda085;
@@ -10,12 +35,14 @@
 }
 
 .background {
-	background-color: #fafafa;
+	background-color: #fafafa;	//背景色
 }
 
 .container {
-	width: 960px;
-	margin-bottom: 50px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto; 
+  padding: 0 15px;
 }
 
 .border-custom {
@@ -29,12 +56,6 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-}
-
-.title h1 {
-	font-size: 2.5rem; 
-	font-weight: bold;
-	margin: 0;
 }
 
 .title::before, 
@@ -54,35 +75,8 @@
 }
 
 .subtitle p {
-	margin-top: 100px;
-	padding: 0.25em 0.5em;/*上下 左右の余白*/
 	color: #494949;/*文字色*/
-	background: transparent;/*背景透明に*/
 	border-left: solid 5px #f6d365;/*左線*/
-}
-
-.breadcrumbs-in li.bcl-last {
-	color: #fda085;
-}
-
-.breadcrumbs-in a {
-	color: #fda085;
-}
-
-.pagination .active .page-link {
-	background-color: #fda085; /* 背景色をオレンジに設定 */
-	border-color: #fda085; /* ボーダー色をオレンジに設定 */
-	color: #fff; /* テキストの色を白に設定 */
-}
-
-.pagination .page-link {
-	color: #fda085; /* 他のページリンクのテキスト色をオレンジに設定 */
-}
-
-.pagination .page-link:hover {
-	background-color: #e68a5e; /* ホバー時の背景色を少し濃く */
-	border-color: #e68a5e; /* ホバー時のボーダー色を少し濃く */
-	color: #fff; /* ホバー時のテキスト色を白に設定 */
 }
 
 /* 検索画面(food#search)のCSS（8/15追加） */
@@ -92,28 +86,18 @@ background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 
 .search-title {
 	display: flex;
-	flex-direction: column; /* 縦に並べる */
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	color: #fff;
-	padding: 20px;
-}
-
-.search-title h1 {
-	font-size: 4rem; /* タイトルのフォントサイズを大きく */
-	font-weight: bold; /* 太字にする */
-	margin: 0; /* マージンをリセット */
-}
-
-.search-title p {
-	font-size: 1.25rem; /* サブタイトルのフォントサイズを設定 */
-	margin-top: 10px; /* 上に余白を追加 */
 }
 
 .search-form {
+	margin: 0 auto;
 	padding: 3em 5em;
-	width: 960px;
+	max-width: 960px;
+	width: 100%;
 	background: rgba(255, 255, 255, 0.3);
 }
 
@@ -125,7 +109,7 @@ background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 .search-btn {
 	background-color: #1ABC9C;
 	color: #fff;
-	width: 800px;
+	width: 100%; 
 	font-weight: bold;
 	border: none;
   cursor: pointer; /* カーソルをポインターに */
@@ -222,14 +206,6 @@ background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
 	color: #1ABC9C;
 }
 
-.subtitle p {
-	margin-top: 100px;
-	padding: 0.25em 0.5em;/*上下 左右の余白*/
-	color: #494949;/*文字色*/
-	background: transparent;/*背景透明に*/
-	border-left: solid 5px #f6d365;/*左線*/
-}
-
 .post-btn {
 	background-color: #f6d365;
 	color: #fff;
@@ -284,10 +260,9 @@ width: 800px;
 	padding: 2rem 2rem;
 }
 
-.user-show-
 .user-image {
-	width: 150px;
-	height: 150px;
+	max-width: 150px;
+	max-height: 150px;
 	object-fit: cover;
 	border-radius: 50%;
 	border: 2px solid #494949;
@@ -319,12 +294,6 @@ width: 800px;
   transform: translateX(-50%);
   background-color: #f6d365;
   border-radius: 2px;
-}
-
-.user-comment {
-	font-size: 1.1rem;
-	color: #6c757d;
-	line-height: 1.6;
 }
 
 .favorite-food-form {
@@ -452,6 +421,32 @@ transition: border-color 0.3s;
 
 .user-new-btn:hover {
 	background-color: #e5b354; /* ホバー時の背景色 */
+}
+
+/* パンくずリスト（8/25追加） */
+.breadcrumbs-in li.bcl-last {
+	color: #fda085;
+}
+
+.breadcrumbs-in a {
+	color: #fda085;
+}
+
+/* ページネーション（8/25追加） */
+.pagination .active .page-link {
+	background-color: #fda085; /* 背景色をオレンジに設定 */
+	border-color: #fda085; /* ボーダー色をオレンジに設定 */
+	color: #fff; /* テキストの色を白に設定 */
+}
+
+.pagination .page-link {
+	color: #fda085; /* 他のページリンクのテキスト色をオレンジに設定 */
+}
+
+.pagination .page-link:hover {
+	background-color: #e68a5e; /* ホバー時の背景色を少し濃く */
+	border-color: #e68a5e; /* ホバー時のボーダー色を少し濃く */
+	color: #fff; /* ホバー時のテキスト色を白に設定 */
 }
 
 /* フラッシュメッセージ（8/25追加） */

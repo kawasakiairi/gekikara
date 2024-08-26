@@ -14,7 +14,7 @@
     <div class="row">
 
       <!-- 食品画像 -->
-      <div class="col-md-6 mt-4 d-flex">
+      <div class="col-12 col-md-6 mt-4 d-flex">
         <div class="d-flex flex-column align-items-center">
           <%= image_tag(@food.food_image.present? ? @food.food_image.url : "image_ramen.png", class: "img-fluid show-food-image") %>
           <!-- お気に入り食品機能（8/23追加） -->
@@ -29,7 +29,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-md-6 mt-4">
+      <div class="col-12 col-md-6 mt-4">
         <!-- 食品名 -->
         <h2 class="fw-bold mt-5"><%= @food.name %></h2>
         <!-- 食品タグ -->
@@ -70,7 +70,7 @@
   <div id="show-review-title" class="title mt-5">
     <h1><%= I18n.t("food.show.review", food_name: @food.name) %></h1>
   </div>
-  <div class="subtitle">
+  <div class="subtitle mt-5">
     <% unless @reviews.present? %>
       <p class="mt-5"><%= I18n.t("food.show.no_review") %></p>
     <% end %>

@@ -26,13 +26,13 @@
         <%= link_to I18n.t("views.pagination.new"), foods_path(sort: 'new'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'new'}", style: "color: #fda085;" %>
         <%= link_to I18n.t("views.pagination.old"), foods_path(sort: 'old'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'old'}", style: "color: #fda085;" %>
         <%= link_to I18n.t("views.pagination.hot"), foods_path(sort: 'hot'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'hot'}", style: "color: #fda085;" %>
-        <%= link_to I18n.t("views.pagination.mild"), foods_path(sort: 'mild'), class: "pe-2 text-decoration-none #{'text-decoration-underline' if @current_sort == 'mild'}", style: "color: #fda085;" %>
+        <%= link_to I18n.t("views.pagination.mild"), foods_path(sort: 'mild'), class: "pe-1 text-decoration-none #{'text-decoration-underline' if @current_sort == 'mild'}", style: "color: #fda085;" %>
       </div>
 
       <!-- 検索結果カード -->
       <div class="row">
         <% @foods.each do |food| %>
-          <div class="col-6 mt-4 d-flex">
+          <div class="col-12 col-md-6 mt-4 d-flex">
             <%= link_to food_path(food), class: "card index-card border-primary d-flex flex-row text-decoration-none" do %>
               <!-- 食品写真 -->
               <div class="d-flex align-items-center">
