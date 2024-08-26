@@ -3,7 +3,28 @@
 @import "bootstrap-icons";
 @import "bootswatch/bootstrap";
 
-/* メディアクエリ対応 */
+
+main {
+  flex-grow: 1;
+}
+
+/* 共通画面のCSS（8/15追加） */
+:root {
+  --bs-primary: #fda085;
+  --bs-primary-rgb: 253, 160, 133;
+}
+
+.background {
+	background-color: #fafafa;	//背景色
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto; 
+  padding: 0 15px;
+}
+
 @media (max-width: 576px) {
 	.container {
 		max-width: 100%;
@@ -26,23 +47,6 @@
 	.container {
 		max-width: 960px;
 	}
-}
-
-/* 共通画面のCSS（8/15追加） */
-:root {
-  --bs-primary: #fda085;
-  --bs-primary-rgb: 253, 160, 133;
-}
-
-.background {
-	background-color: #fafafa;	//背景色
-}
-
-.container {
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto; 
-  padding: 0 15px;
 }
 
 .border-custom {
@@ -463,4 +467,16 @@ transition: border-color 0.3s;
 .flash-message.alert {
   background-color: #ffd4d1;
   color: #930403;
+}
+
+@media (max-width: 576px) {
+  footer {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  footer {
+    font-size: 1rem;
+  }
 }

@@ -18,6 +18,7 @@ ja:
         food_image: 食品画像
         food_category_id: 食品カテゴリ
         food_country_id: 国
+        from: 引用元
       food_category:
         name: 食品カテゴリ
       food_country:
@@ -88,6 +89,8 @@ ja:
       favorite: "お気に入りに追加"
       unfavorite: "お気に入りから削除"
       review: "レビュー"
+      favorite_login: "※お気に入り追加にはログインが必要です。"
+      review_login: "※レビュー投稿にはログインが必要です。"
       no_review: "まだレビューがありません。最初のレビューを書いてみませんか？"
     favorite:
       notice: "お気に入りに追加しました。"
